@@ -13,7 +13,7 @@
  *                      RCC_HSE
  *                      RCC_PLL
  */
-#define RCC_SYSCLK RCC_HSE
+#define RCC_SYSCLK RCC_PLL
 
 /**
  * @brief Configure the clock type for RCC_SYSCLK when using RCC_HSE.
@@ -23,6 +23,31 @@
 #if RCC_SYSCLK == RCC_HSE
 
 #define RCC_CLK_BYPASS RCC_RC_CLK
+
+#endif /**< RCC_SYSCLK */
+
+/**
+ * @brief Configure the Multiplication factor for RCC_CFGR_PLLMUL when using RCC_PLL.
+ *        0x0000: PLL input clock x 2
+ *        0x0001: PLL input clock x 3
+ *        0x0010: PLL input clock x 4
+ *        0x0011: PLL input clock x 5
+ *        0x0100: PLL input clock x 6
+ *        0x0101: PLL input clock x 7
+ *        0x0110: PLL input clock x 8
+ *        0x0111: PLL input clock x 9
+ *        0x1000: PLL input clock x 10
+ *        0x1001: PLL input clock x 11
+ *        0x1010: PLL input clock x 12
+ *        0x1011: PLL input clock x 13
+ *        0x1100: PLL input clock x 14
+ *        0x1101: PLL input clock x 15
+ *        0x1110: PLL input clock x 16
+ *        0x1111: PLL input clock x 16
+ */
+#if RCC_SYSCLK == RCC_PLL
+
+#define DesiredMultiplier 0x0000
 
 #endif /**< RCC_SYSCLK */
 

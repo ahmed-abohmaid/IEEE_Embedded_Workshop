@@ -37,6 +37,13 @@
 #define RCC_HSE 1
 #define RCC_PLL 2
 
+/**
+ * @brief RCC_CFGR_Bit_Definitions
+ */
+#define RCC_CFGR_SW             1
+#define RCC_CFGR_PLLMUL_POS     18
+#define RCC_CFGR_CLR_PLLMUL     (0x0000 << RCC_CFGR_PLLMUL_POS)
+
 #define RCC_CRYSTAL_CLK 0
 #define RCC_RC_CLK 1
 

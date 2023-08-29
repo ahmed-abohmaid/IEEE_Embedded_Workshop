@@ -59,11 +59,26 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         Local_FunctionStatus = E_OK;
 
     #elif RCC_SYSCLK == RCC_PLL
+        /**< Disable the PLL clock. */
+        CLR_BIT(RCC_CR, RCC_CR_PLLON);
 
-    // Placeholder for PLL configuration
+        /**< Set the desired PLL multiplication factor. */
+        RCC_CFGR &= RCC_CFGR_CLR_PLLMUL; // Clear the PLLMUL bits
+        RCC_CFGR |= (DesiredMultiplier << RCC_CFGR_PLLMUL_POS);
+
+        /**< Enable the PLL clock. */
+        SET_BIT(RCC_CR, RCC_CR_PLLON);
+
+        /**< Wait until the PLL clock is stable. */
+        while (!GET_BIT(RCC_CR, RCC_CR_PLLRDY));
+
+        /**< Select PLL as the system clock source. */
+        SET_BIT(RCC_CFGR, RCC_CFGR_SW);
+
+        Local_FunctionStatus = E_OK;
 
     #else
-        #error "Wrong Choice !!"
+        #error "Wrong Choice For RCC_SYSCLK !"
 
     #endif /**< RCC_SYSCLK */
 

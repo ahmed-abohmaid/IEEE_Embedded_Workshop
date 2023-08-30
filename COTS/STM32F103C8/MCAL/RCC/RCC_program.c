@@ -85,10 +85,60 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_Rcc_EnablePeripheral(){
+Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
+    switch (Copy_BusId)
+    {
+        case RCC_AHB:
+            SET_BIT(RCC_AHBENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        case RCC_APB1:
+            SET_BIT(RCC_APB1ENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        case RCC_APB2:
+            SET_BIT(RCC_APB2ENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        default:
+            Local_FunctionStatus = E_NOT_OK;
+        break;
+    }
+
+    return Local_FunctionStatus;
 };
 
-Std_ReturnType Mcal_Rcc_DisablePeripheral(){
+Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
+    switch (Copy_BusId)
+    {
+        case RCC_AHB:
+            CLR_BIT(RCC_AHBENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        case RCC_APB1:
+            CLR_BIT(RCC_APB1ENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        case RCC_APB2:
+            CLR_BIT(RCC_APB2ENR, Copy_PeripheralId);
+            Local_FunctionStatus = E_OK;
+        break;
+
+        default:
+            Local_FunctionStatus = E_NOT_OK;
+        break;
+    }
+
+    return Local_FunctionStatus;
 };

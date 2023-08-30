@@ -9,16 +9,26 @@
 
 /**
  * @brief Select the system clock source.
- *        Your options: RCC_HSI
- *                      RCC_HSE
- *                      RCC_PLL
+ * @note Choose one of the available options:
+ *       - RCC_HSI: High-Speed Internal Clock Source (HSI).
+ *                  This option uses the internal high-speed oscillator as the system clock source.
+ *                  The HSI provides a stable and accurate clock source, suitable for most applications.
+ *       - RCC_HSE: High-Speed External Clock Source (HSE).
+ *                  This option uses an external crystal oscillator as the system clock source.
+ *                  The HSE provides a higher level of accuracy and stability compared to HSI.
+ *                  It is recommended for applications requiring precise timing.
+ *       - RCC_PLL: Phase-Locked Loop Clock Source (PLL).
+ *                  This option uses the PLL as the system clock source, which multiplies
+ *                  the frequency of an input clock source (e.g., HSI or HSE) to generate
+ *                  a higher frequency output. PLL provides flexibility in tuning the clock frequency,
+ *                  making it suitable for applications with specific performance requirements.
  */
-#define RCC_SYSCLK RCC_PLL
+#define RCC_SYSCLK RCC_HSE
 
 /**
  * @brief Configure the clock type for RCC_SYSCLK when using RCC_HSE.
- *        RCC_RC_CLK_       - RC oscillator will be the source of the clock system.
- *        RCC_CRYSTAL_CLK_  - Crystal oscillator will be the source of the clock system.
+ *        RCC_RC_CLK       - RC oscillator will be the source of the clock system.
+ *        RCC_CRYSTAL_CLK  - Crystal oscillator will be the source of the clock system.
  */
 #if RCC_SYSCLK == RCC_HSE
 
@@ -27,7 +37,7 @@
 #endif /**< RCC_SYSCLK */
 
 /**
- * @brief Configure the Multiplication factor for RCC_CFGR_PLLMUL when using RCC_PLL.
+ * @brief Configure the Multiplication factor (DesiredMultiplier) for RCC_CFGR_PLLMUL when using RCC_PLL.
  *        0x0000: PLL input clock x 2
  *        0x0001: PLL input clock x 3
  *        0x0010: PLL input clock x 4

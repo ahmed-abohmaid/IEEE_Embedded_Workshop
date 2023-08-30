@@ -85,60 +85,66 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-    switch (Copy_BusId)
+    switch(Copy_BusId)
     {
+        /**< Enable the peripheral on the AHB bus. */
         case RCC_AHB:
             SET_BIT(RCC_AHBENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Enable the peripheral on the APB1 bus. */
         case RCC_APB1:
             SET_BIT(RCC_APB1ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Enable the peripheral on the APB2 bus. */
         case RCC_APB2:
             SET_BIT(RCC_APB2ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
         default:
             Local_FunctionStatus = E_NOT_OK;
-        break;
+            break;
     }
 
     return Local_FunctionStatus;
-};
+}
 
-Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-    switch (Copy_BusId)
+    switch(Copy_BusId)
     {
+        /**< Disable the peripheral on the AHB bus. */
         case RCC_AHB:
             CLR_BIT(RCC_AHBENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Disable the peripheral on the APB1 bus. */
         case RCC_APB1:
             CLR_BIT(RCC_APB1ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Disable the peripheral on the APB2 bus. */
         case RCC_APB2:
             CLR_BIT(RCC_APB2ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
         default:
             Local_FunctionStatus = E_NOT_OK;
-        break;
+            break;
     }
 
     return Local_FunctionStatus;
-};
+}

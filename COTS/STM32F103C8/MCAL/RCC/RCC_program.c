@@ -62,8 +62,10 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         /**< Disable the PLL clock. */
         CLR_BIT(RCC_CR, RCC_CR_PLLON);
 
-        /**< Set the desired PLL multiplication factor. */
-        RCC_CFGR &= RCC_CFGR_CLR_PLLMUL; // Clear the PLLMUL bits
+        /**< Set the desired PLL multiplication factor.
+         * First we need to clear the PLLMUL bits
+         */
+        RCC_CFGR &= ~(0b1111 << RCC_CFGR_PLLMUL_POS); /*< To Clear 4 Bits in one time */
         RCC_CFGR |= (DesiredMultiplier << RCC_CFGR_PLLMUL_POS);
 
         /**< Enable the PLL clock. */

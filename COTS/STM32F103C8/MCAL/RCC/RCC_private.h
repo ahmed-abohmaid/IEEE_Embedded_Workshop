@@ -125,7 +125,6 @@
  */
 #define RCC_CFGR_SW             1 /*< Second Bit Of System Clock Switch Status */
 #define RCC_CFGR_PLLMUL_POS     18 /*< First Bit Of PLL Multiplication Factor (PLLMUL) */
-#define RCC_CFGR_CLR_PLLMUL     (0x0000 << RCC_CFGR_PLLMUL_POS) /*< Reseted Version Of PLL Multiplication Factor (PLLMUL) */
 /** @} */ // end of RCC_CFGR_Bit_Definitions
 
 /**

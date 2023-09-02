@@ -38,26 +38,26 @@
 
 /**
  * @brief Configure the Multiplication factor (DesiredMultiplier) for RCC_CFGR_PLLMUL when using RCC_PLL.
- *        0x0000: PLL input clock x 2
- *        0x0001: PLL input clock x 3
- *        0x0010: PLL input clock x 4
- *        0x0011: PLL input clock x 5
- *        0x0100: PLL input clock x 6
- *        0x0101: PLL input clock x 7
- *        0x0110: PLL input clock x 8
- *        0x0111: PLL input clock x 9
- *        0x1000: PLL input clock x 10
- *        0x1001: PLL input clock x 11
- *        0x1010: PLL input clock x 12
- *        0x1011: PLL input clock x 13
- *        0x1100: PLL input clock x 14
- *        0x1101: PLL input clock x 15
- *        0x1110: PLL input clock x 16
- *        0x1111: PLL input clock x 16
+ *        0b0000: PLL input clock x 2
+ *        0b0001: PLL input clock x 3
+ *        0b0010: PLL input clock x 4
+ *        0b0011: PLL input clock x 5
+ *        0b0100: PLL input clock x 6
+ *        0b0101: PLL input clock x 7
+ *        0b0110: PLL input clock x 8
+ *        0b0111: PLL input clock x 9
+ *        0b1000: PLL input clock x 10
+ *        0b1001: PLL input clock x 11
+ *        0b1010: PLL input clock x 12
+ *        0b1011: PLL input clock x 13
+ *        0b1100: PLL input clock x 14
+ *        0b1101: PLL input clock x 15
+ *        0b1110: PLL input clock x 16
+ *        0b1111: PLL input clock x 16
  */
 #if RCC_SYSCLK == RCC_PLL
 
-#define DesiredMultiplier 0x0000
+#define DesiredMultiplier 0b0000
 
 #endif /**< RCC_SYSCLK */
 

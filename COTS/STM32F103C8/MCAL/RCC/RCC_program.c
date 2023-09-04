@@ -59,8 +59,43 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         Local_FunctionStatus = E_OK;
 
     #elif RCC_SYSCLK == RCC_PLL
-        /**< Disable the PLL clock. */
+        /**< Disable the PLL clock */
         CLR_BIT(RCC_CR, RCC_CR_PLLON);
+        
+        /**< Select the PLL entry clock source */
+        #if PLL_SRC == RCC_CFGR_PLLSRC_HSI
+            CLR_BIT(RCC_CFGR, RCC_CFGR_PLLSRC);
+        #elif PLL_SRC == RCC_CFGR_PLLSRC_HSE
+            SET_BIT(RCC_CFGR, RCC_CFGR_PLLSRC);
+        #else
+            Local_FunctionStatus = E_NOT_OK;
+        #endif
+        
+        /**< Select the divider for HSE PLL entry clock source */
+        #if HSE_DIV == RCC_CFGR_PLLSRC_HSE_NOT_DIV
+            CLR_BIT(RCC_CFGR, RCC_CFGR_PLLXTPRE);
+        #elif HSE_DIV == RCC_CFGR_PLLSRC_HSE_DIV
+            SET_BIT(RCC_CFGR, RCC_CFGR_PLLXTPRE);
+        #else
+            Local_FunctionStatus = E_NOT_OK;
+        #endif
+        
+        /**< Select the divider for for USB PLL Clock (USB prescaler) 
+         * First we need to disable the USB clock in the RCC_APB1ENR register and enable it again after we finish
+        */
+        /**< Disable the RCC_APB1ENR register */
+        CLR_BIT(RCC_APB1ENR, USBEN);
+
+        #if USB_PRE == RCC_CFGR_USBPRE_NOT_DIV
+            SET_BIT(RCC_CFGR, RCC_CFGR_USBPRE);
+        #elif USB_PRE == RCC_CFGR_USBPRE_DIV
+            CLR_BIT(RCC_CFGR, RCC_CFGR_USBPRE);
+        #else
+            Local_FunctionStatus = E_NOT_OK;
+        #endif
+
+        /**< Enable the RCC_APB1ENR register */
+        SET_BIT(RCC_APB1ENR, USBEN);
 
         /**< Set the desired PLL multiplication factor.
          * First we need to clear the PLLMUL bits
@@ -75,7 +110,8 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         while (!GET_BIT(RCC_CR, RCC_CR_PLLRDY));
 
         /**< Select PLL as the system clock source. */
-        SET_BIT(RCC_CFGR, RCC_CFGR_SW);
+        SET_BIT(RCC_CFGR, RCC_CFGR_SW1);
+        SET_BIT(RCC_CFGR, RCC_CFGR_SW2);
 
         Local_FunctionStatus = E_OK;
 

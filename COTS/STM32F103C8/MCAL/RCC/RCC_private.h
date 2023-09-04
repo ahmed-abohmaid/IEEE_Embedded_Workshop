@@ -120,12 +120,48 @@
 /** @} */ // end of RCC_Clock_Source
 
 /**
- * @defgroup RCC_CFGR_Bit_Definitions
+ * @defgroup RCC_CFGR_Bit_Definitions RCC Clock configuration register Bit Definitions
  * @{
  */
-#define RCC_CFGR_SW             1 /*< Second Bit Of System Clock Switch Status */
+#define RCC_CFGR_SW1             0 /*< First Bit Of System Clock Switch Status */
+#define RCC_CFGR_SW2             1 /*< Second Bit Of System Clock Switch Status */
+#define RCC_CFGR_PLLSRC         16 /*< PLL entry clock source (PLLSRC) */
+#define RCC_CFGR_PLLXTPRE       17 /*< HSE divider for PLL entry (PLLXTPRE) */
 #define RCC_CFGR_PLLMUL_POS     18 /*< First Bit Of PLL Multiplication Factor (PLLMUL) */
+#define RCC_CFGR_USBPRE         22 /*< USB prescaler (USBPRE) */
+
+/**
+ * @brief PLL Entry Clock Source Selection
+ * @{
+*/
+#define RCC_CFGR_PLLSRC_HSI     0  /*< PLL entry clock source as HSI */
+#define RCC_CFGR_PLLSRC_HSE     1  /*< PLL entry clock source as HSE */
+/**@} */ // end of PLL Entry Clock Source Selection
+
+/**
+ * @brief Divider for HSE PLL entry clock source
+ * @{
+*/
+#define RCC_CFGR_PLLSRC_HSE_NOT_DIV  0 /*< HSE clock not divided */
+#define RCC_CFGR_PLLSRC_HSE_DIV      1 /*< HSE clock divided by 2 */
+/**@} */ // end of Divider for HSE PLL entry clock source
+
+/**
+ * @brief Divider for USB PLL Clock (USB prescaler)
+ * @{
+*/
+#define RCC_CFGR_USBPRE_DIV      0 /*< PLL clock is divided by 1.5 */
+#define RCC_CFGR_USBPRE_NOT_DIV  1 /*< PLL clock is not divided */
+/**@} */ // end of Divider for HSE PLL entry clock source
+
 /** @} */ // end of RCC_CFGR_Bit_Definitions
+
+/**
+ * @defgroup RCC_APB1ENR RCC APB1 peripheral clock enable register
+ * @{
+*/
+#define USBEN                    23 /*< USB clock enable */
+/** @} */ // end of RCC_APB1ENR
 
 /**
  * @defgroup RCC_Clock_Type RCC Clock Type Macros

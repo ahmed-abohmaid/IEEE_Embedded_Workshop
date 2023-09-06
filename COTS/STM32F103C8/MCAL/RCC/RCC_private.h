@@ -91,6 +91,14 @@
 /** @} */ // end of RCC Control Register (CR)
 
 /**
+ * @defgroup FLASH_ACR Flash access control register
+ * @{
+*/
+#define FLASH_ACR               (*((volatile u32 *)0x40022000))  /***< Flash Access Control Register */
+#define FLASH_ACR_PRFTBE        4      /***< Prefetch Buffer Enable */
+/** @} */ // end of FLASH_ACR
+
+/**
  * @defgroup RCC_CR_Bit_Definitions RCC Control Register (RCC_CR) Bit Definitions
  * @{
  */
@@ -123,8 +131,9 @@
  * @defgroup RCC_CFGR_Bit_Definitions RCC Clock configuration register Bit Definitions
  * @{
  */
-#define RCC_CFGR_SW1             0 /*< First Bit Of System Clock Switch Status */
-#define RCC_CFGR_SW2             1 /*< Second Bit Of System Clock Switch Status */
+#define RCC_CFGR_SW1            0 /*< First Bit Of System Clock Switch Status */
+#define RCC_CFGR_SW2            1 /*< Second Bit Of System Clock Switch Status */
+#define RCC_CFGR_HPRE_POS       4 /*< AHB prescaler (HPRE) */
 #define RCC_CFGR_PLLSRC         16 /*< PLL entry clock source (PLLSRC) */
 #define RCC_CFGR_PLLXTPRE       17 /*< HSE divider for PLL entry (PLLXTPRE) */
 #define RCC_CFGR_PLLMUL_POS     18 /*< First Bit Of PLL Multiplication Factor (PLLMUL) */

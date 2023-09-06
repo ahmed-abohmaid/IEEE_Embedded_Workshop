@@ -4,7 +4,7 @@
 /*************** Version     : 0.1                   ****************/
 /*************** Module Name : RCC_program.c         ****************/
 /********************************************************************/
-
+#include <math.h>
 /*******************************< LIB *******************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
@@ -113,6 +113,61 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         SET_BIT(RCC_CFGR, RCC_CFGR_SW1);
         SET_BIT(RCC_CFGR, RCC_CFGR_SW2);
 
+        /**< Check if system frequency is greater than 75 MHZ then we need to divide it using AHB prescaler.
+         * First we need to get the system frequency
+        */
+        u8 SYS_CLk = Calc_PLL_Frequency();
+        u8 index = 1;
+
+        /**< divide the system clock until it be less than or equal 72 MHZ*/
+        while (SYS_CLk > 72 && index < 10) // it can be divided by 2^9 (512) max.
+        {
+            SYS_CLk /= pow(2, index);
+            index++;
+        }
+        
+        /**< The value when the while loop condition is false which means that the SYS_CLK is less 72 MHZ */
+        u8 Desired_AHB_Division = pow(2, --index);
+
+        /**< Start AHB Prescaler */
+        if (index != 1) /**< If index == 1 then the AHB Prescaler is kept without changes (SYS_CLk / 1)*/
+        {
+            /**< The prefetch buffer must be kept on when using a prescaler different from 1 on the AHB clock */
+            SET_BIT(FLASH_ACR, FLASH_ACR_PRFTBE);
+
+            RCC_CFGR &= ~((0b1111)<< RCC_CFGR_HPRE_POS);
+            switch (Desired_AHB_Division)
+            {
+            case 2:
+                RCC_CFGR |= (0b1000<< RCC_CFGR_HPRE_POS);
+            break;
+            case 4:
+                RCC_CFGR |= (0b1001<< RCC_CFGR_HPRE_POS);
+            break;
+            case 8:
+                RCC_CFGR |= (0b1010<< RCC_CFGR_HPRE_POS);
+            break;
+            case 16:
+                RCC_CFGR |= (0b1011<< RCC_CFGR_HPRE_POS);
+            break;
+            case 64:
+                RCC_CFGR |= (0b1100<< RCC_CFGR_HPRE_POS);
+            break;
+            case 128:
+                RCC_CFGR |= (0b1101<< RCC_CFGR_HPRE_POS);
+            break;
+            case 256:
+                RCC_CFGR |= (0b1110<< RCC_CFGR_HPRE_POS);
+            break;
+            case 512:
+                RCC_CFGR |= (0b1111<< RCC_CFGR_HPRE_POS);
+            break;
+            default:
+                RCC_CFGR |= (0b0000<< RCC_CFGR_HPRE_POS); /**<  SYSCLK not divided */
+            break;
+            }
+        }
+
         Local_FunctionStatus = E_OK;
 
     #else
@@ -185,4 +240,23 @@ Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
     }
 
     return Local_FunctionStatus;
+}
+
+u8 Calc_PLL_Frequency()
+{
+    u8 PLL_Frequency = 0;
+
+    #if PLL_SRC == RCC_CFGR_PLLSRC_HSI
+        PLL_Frequency = 4 * (DesiredMultiplier + 2);
+    #elif (PLL_SRC == RCC_CFGR_PLLSRC_HSE)
+        #if (HSE_DIV == RCC_CFGR_PLLSRC_HSE_NOT_DIV)
+            PLL_Frequency = 8 * (DesiredMultiplier + 2);
+        #else
+            PLL_Frequency = 4 * (DesiredMultiplier + 2);
+        #endif
+    #else
+        PLL_Frequency = 0;
+    #endif
+
+    return PLL_Frequency;
 }

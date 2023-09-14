@@ -12,6 +12,9 @@
 #include "NVIC_interface.h"
 #include "NVIC_private.h"
 #include "NVIC_config.h"
+/*****************************< SCB *****************************/
+#include "SCB_interface.h"
+
 /*****************************< Function Implementations *****************************/
 
 Std_ReturnType MCAL_NVIC_EnableIRQ(IRQn_Type Copy_IRQn)
@@ -173,3 +176,32 @@ Std_ReturnType MCAL_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
   return Local_FunctionStatus;
 }
 
+Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
+
+    if (Copy_IRQn < 0 || Copy_IRQn >= NUMBER_OF_INTERRUPTS) /**< Check if IRQn is within valid range */ 
+    {
+        return Local_FunctionStatus;
+    }
+
+    if (Copy_Priority <= NVIC_MAX_PRIORITY) /**< Ensure the priority value is within the valid range (0-255) */ 
+    {
+        /**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
+        SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
+        
+        /**< Calculate the register index (IPRx) and bit position within the register */ 
+        u32 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */  
+        u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */
+
+        /**< Clear the bits that control the priority for the given interrupt */ 
+        NVIC_IPR_BASE_ADDRESS[RegisterIndex] &= ~(0xFF << BitPosition);
+
+        /**< Set the priority in the appropriate IPRx register */ 
+        NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << (BitPosition << 4));
+
+        Local_FunctionStatus = E_OK;
+    }
+
+    return Local_FunctionStatus;
+}

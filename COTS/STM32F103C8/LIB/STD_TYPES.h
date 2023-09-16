@@ -22,6 +22,7 @@ typedef double              f64;
 typedef long double         f96;
 
 typedef u8                  Std_ReturnType;
+typedef s8                  INVALID_VALUE;
 
 #define E_OK                (Std_ReturnType)1
 #define E_NOT_OK            (Std_ReturnType)0

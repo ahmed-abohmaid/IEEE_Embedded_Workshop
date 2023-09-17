@@ -2,7 +2,7 @@
 /*************** Author      : Ahmed Ramadan Youssif ****************/
 /*************** Date        : 5 Sep 2023            ****************/
 /*************** Version     : 0.1                   ****************/
-/*************** Module Name : NVIC_interface.h      ****************/
+/*************** Module Name : NVIC_config.h         ****************/
 /********************************************************************/
 #ifndef NVIC_CONFIG_H_
 #define NVIC_CONFIG_H_

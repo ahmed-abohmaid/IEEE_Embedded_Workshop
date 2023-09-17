@@ -2,7 +2,7 @@
 /*************** Author      : Ahmed Ramadan Youssif  ***************/
 /*************** Date        : 14 Sep 2023            ***************/
 /*************** Version     : 0.1                    ***************/
-/*************** Module Name : SCB_interface.h        ***************/
+/*************** Module Name : SCB_private.h          ***************/
 /********************************************************************/
 #ifndef SCB_PRIVATE_H
 #define SCB_PRIVATE_H

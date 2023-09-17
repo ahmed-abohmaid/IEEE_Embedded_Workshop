@@ -16,18 +16,27 @@
 
 Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
 {
-  Std_ReturnType Local_FunctnStatus;
+  Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
   if (Copy_Line > 15 || Copy_PortMap > 2)
   {
-    return Local_FunctnStatus;
+    return Local_FunctionStatus;
   }
 
-  u8 Local_RegIndex = Copy_Line / 4;
-  Copy_Line %= 4;
+    /**< Calculate the index of the EXTI control register for the specified line */ 
+    u8 Local_RegIndex = Copy_Line / 4;
 
-  AFIO->AFIO_EXTICR[Local_RegIndex] &= ~((0b1111) << (Copy_Line * 4));
-  AFIO->AFIO_EXTICR[Local_RegIndex] |= Copy_PortMap << (Copy_Line * 4);
+    /**< Calculate the bit position within the EXTI control register for the specified line */ 
+    Copy_Line %= 4;
 
-  return Local_FunctnStatus;
+    /**< Clear the bits that correspond to the EXTI line within the EXTI control register */ 
+    AFIO->EXTICR[Local_RegIndex] &= ~((0x0F) << (Copy_Line * 4));
+
+    /**< Set the new PortMap value for the EXTI line within the EXTI control register */ 
+    AFIO->EXTICR[Local_RegIndex] |= Copy_PortMap << (Copy_Line * 4);
+
+    /**< Configuration is successful, set the function status to E_OK */ 
+    Local_FunctionStatus = E_OK;
+
+  return Local_FunctionStatus;
 }

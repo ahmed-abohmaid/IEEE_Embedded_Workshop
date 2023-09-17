@@ -11,10 +11,10 @@
 
 typedef struct
 {
-  volatile u32 AFIO_EVCR;
-  volatile u32 AFIO_MAPR;
-  volatile u32 AFIO_EXTICR[4];
-  volatile u32 AFIO_MAPR2;
+  volatile u32 EVCR;
+  volatile u32 MAPR;
+  volatile u32 EXTICR[4];
+  volatile u32 MAPR2;
 
 } AFIO_RegDef_t;
 

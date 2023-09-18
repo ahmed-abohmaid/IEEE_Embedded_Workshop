@@ -177,8 +177,8 @@
  * @{
  */
 
-#define RCC_CRYSTAL_CLK_    0   /**< Crystal Oscillator Clock Type */
-#define RCC_RC_CLK_         1   /**< RC Oscillator Clock Type */
+#define RCC_CRYSTAL_CLK    0   /**< Crystal Oscillator Clock Type */
+#define RCC_RC_CLK         1   /**< RC Oscillator Clock Type */
 
 /** @} */ // end of RCC_Clock_Type
 

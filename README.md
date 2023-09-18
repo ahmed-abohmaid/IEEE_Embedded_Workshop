@@ -1,6 +1,8 @@
 # Embedded Systems Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
-### This Workshop was supported by IEEE and Eng. [Mahmoud Abdelraouf](https://github.com/Mahmoud-Abdelraouf) is the instroctor.
 
-<br />
+## This workshop supported by IEEE and instructed by [Eng. Mahmoud Abdelraouf](https://github.com/Mahmoud-Abdelraouf). In this workshop, I will delve into the essential concepts of microcontroller architecture and gain hands-on experience in interfacing with ARM Cortex-based microcontrollers.
 
-Here I learn the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
+### Overview:
+- Learn the fundamental principles of microcontroller architecture.
+- Gain practical experience in interfacing with ARM Cortex-based microcontrollers.
+- Discover how to develop embedded systems applications with building projects.

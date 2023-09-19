@@ -243,21 +243,21 @@ Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 }
 
 /**< Function to get the system clock which provided by PLL */
-u8 Calc_PLL_Frequency()
-{
-    u8 PLL_Frequency = 0;
-
-    #if PLL_SRC == RCC_CFGR_PLLSRC_HSI /**< If HSI is the PLL source clock which provide (8MHZ / 2) */
-        PLL_Frequency = 4 * (DesiredMultiplier + 2);
-    #elif PLL_SRC == RCC_CFGR_PLLSRC_HSE /**< If HSE is the PLL source clock which provide (8MHZ) if it is Crystal or RC */
-        #if HSE_DIV == RCC_CFGR_PLLSRC_HSE_NOT_DIV
-            PLL_Frequency = 8 * (DesiredMultiplier + 2);
-        #else
-            PLL_Frequency = 4 * (DesiredMultiplier + 2);
-        #endif
-    #else
-        PLL_Frequency = 0;
-    #endif
-
-    return PLL_Frequency;
-}
+// u8 Calc_PLL_Frequency()
+// {
+//     u8 PLL_Frequency = 0;
+// 
+//     #if PLL_SRC == RCC_CFGR_PLLSRC_HSI /**< If HSI is the PLL source clock which provide (8MHZ / 2) */
+//         PLL_Frequency = 4 * (DesiredMultiplier + 2);
+//     #elif PLL_SRC == RCC_CFGR_PLLSRC_HSE /**< If HSE is the PLL source clock which provide (8MHZ) if it is Crystal or RC */
+//         #if HSE_DIV == RCC_CFGR_PLLSRC_HSE_NOT_DIV
+//             PLL_Frequency = 8 * (DesiredMultiplier + 2);
+//         #else
+//             PLL_Frequency = 4 * (DesiredMultiplier + 2);
+//         #endif
+//     #else
+//         PLL_Frequency = 0;
+//     #endif
+// 
+//     return PLL_Frequency;
+// }

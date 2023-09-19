@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6190000::V6.19::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -47,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
+          <OutputDirectory>.\Objects\</OutputDirectory>
           <OutputName>on-demand-traffic-light-system</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\</ListingPath>
+          <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>0</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -173,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
+            <Capability>1</Capability>
             <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -300,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -320,7 +280,7 @@
                 <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -423,9 +383,196 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+          <Files>
+            <File>
+              <FileName>EXTI_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\EXTI_program.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\GPIO_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\GPIO_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\GPIO_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GPIO_program.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LED_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LED_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LED_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED_Program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LED_Program.c</FilePath>
+            </File>
+            <File>
+              <FileName>RCC_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RCC_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>RCC_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RCC_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>RCC_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RCC_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>RCC_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RCC_program.c</FilePath>
+            </File>
+            <File>
+              <FileName>STK_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STK_program.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>BIT_MATH.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BIT_MATH.h</FilePath>
+            </File>
+            <File>
+              <FileName>STD_TYPES.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STD_TYPES.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\AFIO_program.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Device</GroupName>
         </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.6.0" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS">
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+    </components>
+    <files>
+      <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
+        <instance index="0">RTE\Device\STM32F103C8\RTE_Device.h</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" condition="STM32F1xx MD ARMCC" name="Device\Source\ARM\startup_stm32f10x_md.s" version="1.0.1">
+        <instance index="0">RTE\Device\STM32F103C8\startup_stm32f10x_md.s</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Device\Source\system_stm32f10x.c" version="1.0.1">
+        <instance index="0">RTE\Device\STM32F103C8\system_stm32f10x.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+    </files>
+  </RTE>
 
 </Project>

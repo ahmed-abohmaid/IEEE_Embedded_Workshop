@@ -62,6 +62,6 @@ Std_ReturnType LED_Off(u8 Copy_PortId, u8 Copy_PinId);
  * 
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_Bounced(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_MillisecondDelay);
+Std_ReturnType LED_Bounced(u8 Copy_PortId, u8 Copy_PinId, f32 Copy_MillisecondDelay);
 
 #endif /**< SCB_INTERFACE_H */

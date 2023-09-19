@@ -60,7 +60,7 @@ void EXTI_vInit(void)
       CLR_BIT(EXTI->IMR, Line);
     }
   }
-  return Local_FunctionStatus;
+  // return Local_FunctionStatus;
 }
 
 Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)

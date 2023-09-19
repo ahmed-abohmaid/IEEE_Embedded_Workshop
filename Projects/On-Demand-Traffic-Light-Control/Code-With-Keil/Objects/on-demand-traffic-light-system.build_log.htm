@@ -1,0 +1,113 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Ahmed Ramadan, NA, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\Me\College_Courses\Embedded Systems\IEEE\First_Project\Projects\On-Demand-Traffic-Light-Control\Code-With-Keil\on-demand-traffic-light-system.uvprojx
+Project File Date:  09/19/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+LED_Program.c(10): warning: In file included from...
+./STD_TYPES.h(32): warning: // comments are not allowed in this language [-Wcomment]
+#endif // STD_TYPES_H
+       ^
+./STD_TYPES.h(32): warning: no newline at end of file [-Wnewline-eof]
+#endif // STD_TYPES_H
+                     ^
+LED_Program.c(11): warning: In file included from...
+./BIT_MATH.h(15): warning: // comments are not allowed in this language [-Wcomment]
+#endif // BIT_MATH_H
+       ^
+./BIT_MATH.h(15): warning: no newline at end of file [-Wnewline-eof]
+#endif // BIT_MATH_H
+                    ^
+LED_Program.c(14): warning: In file included from...
+./GPIO_interface.h(33): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */ // End of GPIO_Values group
+          ^
+./GPIO_interface.h(137): warning: no newline at end of file [-Wnewline-eof]
+#endif // GPIO_INTERFACE_H
+                          ^
+LED_Program.c(16): warning: In file included from...
+./STK_interface.h(147): warning: // comments are not allowed in this language [-Wcomment]
+#endif // STK_INTERFACE_H
+       ^
+./STK_interface.h(147): warning: no newline at end of file [-Wnewline-eof]
+#endif // STK_INTERFACE_H
+                         ^
+LED_Program.c(25): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
+  return MCAL_GPIO_SetPinMode(Copy_PortId, Copy_PinId, GPIO_OUTPUT_PUSH_PULL_2MHZ);
+                                                       ^
+./GPIO_interface.h(80): note: expanded from macro 'GPIO_OUTPUT_PUSH_PULL_2MHZ'
+#define GPIO_OUTPUT_PUSH_PULL_2MHZ               0b0010 /**< GPIO Output Push-Pull Mode, 2MHz */
+                                                 ^
+LED_Program.c(42): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (u8 i = 0; i < 2; i++)
+             ^
+LED_Program.c(42): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED_Program.c(55): warning: // comments are not allowed in this language [-Wcomment]
+  // MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, LED_HIGH);
+  ^
+LED_Program.c(71): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+13 warnings generated.
+compiling LED_Program.c...
+linking...
+Program Size: Code=3104 RO-data=252 RW-data=0 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 13 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
+                Keil.STM32F1xx_DFP.2.4.1
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103C8
+  ./RTE/_Target_1
+  C:/Users/yarab/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/yarab/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>

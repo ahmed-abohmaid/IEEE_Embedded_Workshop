@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "math.h": "c",
-    "exti_interface.h": "c"
+    "exti_interface.h": "c",
+    "scb_interface.h": "c",
+    "gpio_interface.h": "c"
   }
 }

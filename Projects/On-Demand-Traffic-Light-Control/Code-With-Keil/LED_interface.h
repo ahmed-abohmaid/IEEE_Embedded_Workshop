@@ -18,7 +18,7 @@
  * 
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_SetMode(u8 Copy_PortId, u8 Copy_PinId);
+Std_ReturnType LED_Init(u8 Copy_PortId, u8 Copy_PinId);
 
 /**
  * @brief Enable The LED.
@@ -55,13 +55,13 @@ Std_ReturnType LED_Off(u8 Copy_PortId, u8 Copy_PinId);
  * 
  * @param[in] Copy_PortId The ID of the GPIO port (e.g., GPIO_PORTA, GPIO_PORTB, etc.).
  * @param[in] Copy_PinId The ID of the GPIO pin (e.g., GPIO_PIN0, GPIO_PIN1, etc.).
- * @param[in] Copy_MillisecondDelay The number of millisecond to wait for the system. This value should be less than or equal to 16777215 (0x00FFFFFF).
+ * @param[in] Copy_BlinkTime The number of millisecond to wait for the system. This value should be less than or equal to 16777215 (0x00FFFFFF).
  *
  * @note You Need First To use [LED_SetMode] function.
  * @note The maximum delay achievable with this function, when the SysTick timer clock is 1 MHz, is approximately 16 seconds.
  * 
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_Bounced(u8 Copy_PortId, u8 Copy_PinId, f32 Copy_MillisecondDelay);
+Std_ReturnType LED_Blink(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_BlinkTime);
 
 #endif /**< SCB_INTERFACE_H */

@@ -20,7 +20,7 @@
 #include "LED_config.h"
 /*****************************< Function Implementations *****************************/
 
-Std_ReturnType LED_SetMode(u8 Copy_PortId, u8 Copy_PinId)
+Std_ReturnType LED_Init(u8 Copy_PortId, u8 Copy_PinId)
 {
   return MCAL_GPIO_SetPinMode(Copy_PortId, Copy_PinId, GPIO_OUTPUT_PUSH_PULL_2MHZ);
 }
@@ -35,14 +35,22 @@ Std_ReturnType LED_Off(u8 Copy_PortId, u8 Copy_PinId)
   return MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, LED_LOW);
 }
 
-Std_ReturnType LED_Bounced(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_MillisecondDelay)
+Std_ReturnType LED_Blink(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_BlinkTime)
 {
-  MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, LED_HIGH);
+    if(MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_HIGH) == E_NOT_OK)
+    {
+        return E_NOT_OK;
+    }
 
-  /**< Add Delay Before Disable The LED */
-  STK_SetDelay_ms(500);
-  MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, LED_LOW);
+    if(STK_SetDelay_ms(Copy_BlinkTime) == E_NOT_OK)
+    {
+        return E_NOT_OK;
+    }
 
-  /**< Add Delay Before Enable The LED Again */
-  STK_SetDelay_ms(500);
+    if(MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_LOW) == E_NOT_OK)
+    {
+        return E_NOT_OK;
+    }
+
+    return E_OK;
 }

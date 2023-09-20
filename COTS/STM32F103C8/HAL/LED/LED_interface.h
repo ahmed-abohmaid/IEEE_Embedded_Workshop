@@ -1,12 +1,15 @@
 /********************************************************************/
 /*************** Author      : Ahmed Ramadan Youssif  ***************/
-/*************** Date        : 9 Sep 2023             ***************/
+/*************** Date        : 19 Sep 2023            ***************/
 /*************** Version     : 0.1                    ***************/
 /*************** Module Name : LED_interface.h        ***************/
 /*************** Layer       : HAL                    ***************/
 /********************************************************************/
-#ifndef SCB_INTERFACE_H
-#define SCB_INTERFACE_H
+#ifndef LED_INTERFACE_H
+#define LED_INTERFACE_H
+
+#define LED_HIGH                 1
+#define LED_LOW                  0
 
 /**
  * @brief Set The LED Mode.
@@ -18,7 +21,7 @@
  * 
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_Init(u8 Copy_PortId, u8 Copy_PinId);
+Std_ReturnType HAL_LED_Init(u8 Copy_PortId, u8 Copy_PinId);
 
 /**
  * @brief Enable The LED.
@@ -32,7 +35,7 @@ Std_ReturnType LED_Init(u8 Copy_PortId, u8 Copy_PinId);
  * 
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_On(u8 Copy_PortId, u8 Copy_PinId);
+Std_ReturnType HAL_LED_On(u8 Copy_PortId, u8 Copy_PinId);
 
 /**
  * @brief Disable The LED.
@@ -46,12 +49,12 @@ Std_ReturnType LED_On(u8 Copy_PortId, u8 Copy_PinId);
  * 
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_Off(u8 Copy_PortId, u8 Copy_PinId);
+Std_ReturnType HAL_LED_Off(u8 Copy_PortId, u8 Copy_PinId);
 
 /**
- * @brief Bounce LED for the specified number of millisecond.
+ * @brief Blink LED once for a specified number of millisecond.
  *
- * This function enables and disables specific LED for the specified number of millisecond using the SysTick timer.
+ * This function blinks specific LED once for the specified number of millisecond using the SysTick timer.
  * 
  * @param[in] Copy_PortId The ID of the GPIO port (e.g., GPIO_PORTA, GPIO_PORTB, etc.).
  * @param[in] Copy_PinId The ID of the GPIO pin (e.g., GPIO_PIN0, GPIO_PIN1, etc.).
@@ -62,6 +65,6 @@ Std_ReturnType LED_Off(u8 Copy_PortId, u8 Copy_PinId);
  * 
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType LED_Blink(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_BlinkTime);
+Std_ReturnType HAL_LED_Blink(u8 Copy_PortId, u8 Copy_PinId, u32 Copy_BlinkTime);
 
-#endif /**< SCB_INTERFACE_H */
+#endif /**< LED_INTERFACE_H */

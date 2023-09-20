@@ -20,7 +20,6 @@
 /*****************************< Function Implementations *****************************/
 void EXTI_vInit(void)
 {
-  Std_ReturnType Local_FunctionStatus = E_NOT_OK;
   for (u8 Line = 0; Line <= EXTI_LINES_COUNT; Line++)
   {
     if (EXTI_Configurations[Line].LineEnabled == EXTI_LINE_ENABLED)
@@ -31,28 +30,21 @@ void EXTI_vInit(void)
       {
       case EXTI_RISING_EDGE:
         SET_BIT(EXTI->RTSR, Line);
-        Local_FunctionStatus = E_OK;
         break;
 
       case EXTI_FALLING_EDGE:
         SET_BIT(EXTI->FTSR, Line);
-        Local_FunctionStatus = E_OK;
         break;
 
       case EXTI_BOTH_EDGES:
         SET_BIT(EXTI->RTSR, Line);
         SET_BIT(EXTI->FTSR, Line);
-        Local_FunctionStatus = E_OK;
-        break;
-
-      default:
-        Local_FunctionStatus = E_NOT_OK;
         break;
       }
 
       if (EXTI_Configurations[Line].GPIO_PortMap != EXTI_GPIO_NONE)
       {
-        Local_FunctionStatus = MCAL_AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
+        MCAL_AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
       }
     }
     else
@@ -60,7 +52,6 @@ void EXTI_vInit(void)
       CLR_BIT(EXTI->IMR, Line);
     }
   }
-  // return Local_FunctionStatus;
 }
 
 Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)

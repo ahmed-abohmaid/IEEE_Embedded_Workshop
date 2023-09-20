@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Me\College_Courses\Embedded Systems\IEEE\First_Project\Projects\On-Demand-Traffic-Light-Control\Code-With-Keil\on-demand-traffic-light-system.uvprojx
-Project File Date:  09/19/2023
+Project File Date:  09/20/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
@@ -59,18 +59,46 @@ main.c(6): warning: In file included from...
 ./STK_interface.h(147): warning: no newline at end of file [-Wnewline-eof]
 #endif // STK_INTERFACE_H
                          ^
-main.c(52): warning: // comments are not allowed in this language [-Wcomment]
-                // Continuously blink yellow LED for 5 seconds
-                ^
-main.c(50): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-                u32 yellowBlinkStartTime = STK_GetElapsedCounts();
-                    ^
-11 warnings generated.
+main.c(7): warning: In file included from...
+./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */  // EXTI_Configurations
+           ^
+./EXTI_interface.h(150): warning: no newline at end of file [-Wnewline-eof]
+#endif // EXTI_INTERFACE_H
+                          ^
+main.c(8): warning: In file included from...
+./NVIC_interface.h(176): warning: // comments are not allowed in this language [-Wcomment]
+#endif // NVIC_INTERFACE_H
+       ^
+./NVIC_interface.h(176): warning: no newline at end of file [-Wnewline-eof]
+#endif // NVIC_INTERFACE_H
+                          ^
+main.c(11): warning: In file included from...
+./BUTTON_interface.h(81): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
+    PB_PIN15, /**< Pin 15 */ 
+            ^
+main.c(61): warning: // comments are not allowed in this language [-Wcomment]
+        // Continuously blink yellow LED for 5 seconds
+        ^
+main.c(59): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        u32 yellowBlinkStartTime = STK_GetElapsedCounts();
+            ^
+main.c(49): warning: no previous prototype for function 'EXTI4_IRQHandler' [-Wmissing-prototypes]
+void EXTI4_IRQHandler(void)
+     ^
+main.c(49): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI4_IRQHandler(void)
+^
+static 
+main.c(86): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        u32 yellowBlinkStartTime = STK_GetElapsedCounts();
+            ^
+18 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=3148 RO-data=252 RW-data=0 ZI-data=1640  
+Program Size: Code=4200 RO-data=268 RW-data=16 ZI-data=1640  
 FromELF: creating hex file...
-".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 11 Warning(s).
+".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -97,10 +125,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

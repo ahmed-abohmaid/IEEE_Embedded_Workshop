@@ -41,4 +41,7 @@ typedef struct
     u8 : 2;                     /**< 2 bits of padding */
 } EXTI_Configuration_t;
 
+/**< EXTI line configuration settings */
+extern EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT];
+
 #endif // EXTI_PRIVATE_H

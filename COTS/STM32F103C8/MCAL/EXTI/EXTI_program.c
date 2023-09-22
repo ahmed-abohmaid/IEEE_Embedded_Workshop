@@ -159,3 +159,17 @@ Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
 
   return Local_FunctionStatus;
 }
+
+void EXTI_SetCallBack(void (*pf)(void))
+{
+  ptr = pf;
+}
+
+/**< Function to handle the interrupt which comming from pin 4.
+ * You need to know with handler you should call based on which line is enabled for interrupt.
+ * You will find them in the starter file.
+ */
+void EXTI4_IRQHandler(void)
+{
+  ptr();
+}

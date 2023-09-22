@@ -144,7 +144,13 @@ Std_ReturnType EXTI_DisableLine(u8 Copy_Line);
  */
 Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 
-/** @} */ // End of EXTI_Control
+/**
+ * < Callback Function for interrupts.
+ * This function take interrupt handler function as a parameter to pass it to the pointer to function global variable (ptr).
+ * This pointer to function variable is private.
+*/
+void EXTI_SetCallBack(void (*pf)(void));
 
+/** @} */ // End of EXTI_Control
 
 #endif // EXTI_INTERFACE_H

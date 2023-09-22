@@ -12,13 +12,37 @@
 
 /**< APP */
 
-#define ROAD_GREEN_LED 				GPIO_PIN1
-#define SHARED_YELLOW_LED 		GPIO_PIN2
-#define ROAD_RED_LED 					GPIO_PIN3
-#define PEOPLE_RED_LED 				GPIO_PIN6
-#define PEOPLE_GREEN_LED 			GPIO_PIN5
+#define ROAD_GREEN_LED 							GPIO_PIN1
+#define SHARED_YELLOW_LED 					GPIO_PIN2
+#define ROAD_RED_LED 								GPIO_PIN3
+#define PEOPLE_RED_LED 							GPIO_PIN6
+#define PEOPLE_GREEN_LED 						GPIO_PIN5
+#define PEOPLE 											0
+#define ROAD 												1
 
-void StartTrafficToggling(u8, u8, u8, u8);
+/**< Flag to indicate long press */
+volatile u8 longPressDetected = 1;
+
+/**< The main logic of the traffic light control system. */
+void StartTrafficToggling(u8);
+
+/**< Enable the green Led on the road side */
+void StartRoad(void);
+
+/**< Enable the green Led on the people side */
+void StartPeople(void);
+
+/**< Blink the yellow Led on both sides */
+void BlinkYellow(void);
+
+/**< Turn off all leds on both sides */
+void DisableAllLeds(void);
+
+/**
+ * < Handle the button press from people side.
+ * This Button allow people to make request to cross the road.
+ */
+void HandleBtnPress(void);
 
 int main(void)
 {
@@ -30,91 +54,144 @@ int main(void)
 
 	/**< Set LED Pins as output push pull */
 	HAL_LED_Init(GPIO_PORTA, ROAD_RED_LED);
-	HAL_LED_Init(GPIO_PORTA, SHARED_YELLOW_LED);
 	HAL_LED_Init(GPIO_PORTA, ROAD_GREEN_LED);
 	HAL_LED_Init(GPIO_PORTA, PEOPLE_GREEN_LED);
 	HAL_LED_Init(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_Init(GPIO_PORTA, SHARED_YELLOW_LED);
 
-	/**< Set push button pin as inpuy pull down */
-	HAL_PushButton_Init(GPIO_PORTA, GPIO_PIN4, ACTIVE_HIGH);
-	MCAL_NVIC_EnableIRQ(10);
+	/**< Init EXTI Configurations */
 	EXTI_vInit();
+	MCAL_NVIC_EnableIRQ(10); // For Line 4
+	EXTI_SetCallBack(HandleBtnPress);
+
+	/**< Set push button pin as input pull down */
+	HAL_PushButton_Init(GPIO_PORTA, GPIO_PIN4, ACTIVE_HIGH);
 
 	while (1)
 	{
-		StartTrafficToggling(ROAD_GREEN_LED, ROAD_RED_LED, PEOPLE_RED_LED, PEOPLE_GREEN_LED);
+		if (longPressDetected)
+		{
+			/**
+			 * < Normal case.
+			 * If long press detected don't switch to PEOPLE_GREEN_LED.
+			 */
+			StartTrafficToggling(ROAD);
+		}
+		else
+		{
+			/**< if Short Press Detected */
+			StartTrafficToggling(PEOPLE);
+		}
 	}
 }
 
-void EXTI4_IRQHandler(void)
+void HandleBtnPress(void)
 {
+	STK_Reset();
 
-	EXTI_EnableLine(4);
+	/**< Make Delay before getting button value to check for long press. */
+	STK_SetDelay_ms(250);
+
+	u8 currButtonState;
+	MCAL_GPIO_GetPinValue(GPIO_PORTA, GPIO_PIN4, &currButtonState);
+
+	if (currButtonState == 1)
+	{
+		/**< Long press detected */
+
+		longPressDetected = 1;
+
+		DisableAllLeds();
+
+		main(); // Restart the main loop
+	}
+	else
+	{
+		/**< Short press detected */
+
+		DisableAllLeds();
+
+		BlinkYellow();
+
+		longPressDetected = 0; // Reset the long press flag
+		main();								 // Restart the main loop
+	}
+}
+
+void StartTrafficToggling(u8 starter)
+{
+	if (starter == ROAD)
+	{
+
+		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
+
+		StartRoad();
+
+		BlinkYellow();
+
+		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
+
+		StartPeople();
+
+		BlinkYellow();
+	}
+	else
+	{
+
+		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
+
+		StartPeople();
+
+		BlinkYellow();
+
+		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
+
+		StartRoad();
+
+		BlinkYellow();
+	}
+}
+
+void StartRoad(void)
+{
+	HAL_LED_On(GPIO_PORTA, ROAD_GREEN_LED);
+	HAL_LED_On(GPIO_PORTA, PEOPLE_RED_LED);
+	STK_SetDelay_ms(5000);
+
+	HAL_LED_Off(GPIO_PORTA, ROAD_GREEN_LED);
+	HAL_LED_Off(GPIO_PORTA, PEOPLE_RED_LED);
+}
+
+void StartPeople(void)
+{
+	HAL_LED_On(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_On(GPIO_PORTA, ROAD_RED_LED);
+	STK_SetDelay_ms(5000);
+
+	HAL_LED_Off(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_Off(GPIO_PORTA, ROAD_RED_LED);
+}
+
+void BlinkYellow(void)
+{
+	STK_Reset();
+	u32 yellowBlinkStartTime = STK_GetElapsedCounts();
+
+	// Continuously blink yellow LED for 5 seconds
+	while (STK_GetElapsedCounts() - yellowBlinkStartTime < (5000 * (1000000 / 1000)))
+	{
+		HAL_LED_Blink(GPIO_PORTA, SHARED_YELLOW_LED, 500); // Blink yellow every 500ms
+		STK_SetDelay_ms(500);
+
+		// Update the start time on each iteration
+		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (500 * (1000000 / 1000)));
+	}
+}
+
+void DisableAllLeds(void)
+{
 	HAL_LED_Off(GPIO_PORTA, ROAD_RED_LED);
 	HAL_LED_Off(GPIO_PORTA, ROAD_GREEN_LED);
 	HAL_LED_Off(GPIO_PORTA, PEOPLE_GREEN_LED);
 	HAL_LED_Off(GPIO_PORTA, PEOPLE_RED_LED);
-
-	STK_Reset();
-	u32 yellowBlinkStartTime = STK_GetElapsedCounts();
-
-	// Continuously blink yellow LED for 5 seconds
-	while (STK_GetElapsedCounts() - yellowBlinkStartTime < (5000 * (1000000 / 1000)))
-	{
-		HAL_LED_Blink(GPIO_PORTA, SHARED_YELLOW_LED, 500); // Blink yellow every 500ms
-		STK_SetDelay_ms(500);
-
-		// Update the start time on each iteration
-		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (500 * (1000000 / 1000)));
-	}
-
-	StartTrafficToggling(ROAD_RED_LED, ROAD_GREEN_LED, PEOPLE_GREEN_LED, PEOPLE_RED_LED);
-	
-	EXTI_DisableLine(4);
-}
-
-void StartTrafficToggling(u8 FirstRoadLedOn, u8 LastRoadLedOn, u8 FirstPeopleLedOn, u8 LastPeopleLedOn)
-{
-	HAL_LED_On(GPIO_PORTA, FirstRoadLedOn);
-	HAL_LED_On(GPIO_PORTA, FirstPeopleLedOn);
-	STK_SetDelay_ms(5000);
-
-	HAL_LED_Off(GPIO_PORTA, FirstRoadLedOn);
-	HAL_LED_Off(GPIO_PORTA, FirstPeopleLedOn);
-
-	STK_Reset();
-	u32 yellowBlinkStartTime = STK_GetElapsedCounts();
-
-	// Continuously blink yellow LED for 5 seconds
-	while (STK_GetElapsedCounts() - yellowBlinkStartTime < (5000 * (1000000 / 1000)))
-	{
-		HAL_LED_Blink(GPIO_PORTA, SHARED_YELLOW_LED, 500); // Blink yellow every 500ms
-		STK_SetDelay_ms(500);
-
-		// Update the start time on each iteration
-		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (500 * (1000000 / 1000)));
-	}
-
-	// Turn off yellow LED
-	HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
-
-	HAL_LED_On(GPIO_PORTA, LastRoadLedOn);
-	HAL_LED_On(GPIO_PORTA, LastPeopleLedOn);
-	STK_SetDelay_ms(5000);
-
-	HAL_LED_Off(GPIO_PORTA, LastRoadLedOn);
-	HAL_LED_Off(GPIO_PORTA, LastPeopleLedOn);
-
-	STK_Reset();
-	yellowBlinkStartTime = STK_GetElapsedCounts();
-
-	// Continuously blink yellow LED for 5 seconds
-	while (STK_GetElapsedCounts() - yellowBlinkStartTime < (5000 * (1000000 / 1000)))
-	{
-		HAL_LED_Blink(GPIO_PORTA, SHARED_YELLOW_LED, 500); // Blink yellow every 500ms
-		STK_SetDelay_ms(500);
-
-		// Update the start time on each iteration
-		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (500 * (1000000 / 1000)));
-	}
 }

@@ -44,4 +44,9 @@ typedef struct
 /**< EXTI line configuration settings */
 extern EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT];
 
+/**
+ * < This is pointer to function to store the interrupt handler function.
+*/
+void (*ptr)() = NULL;
+
 #endif // EXTI_PRIVATE_H

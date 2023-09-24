@@ -539,6 +539,26 @@
               <FileType>1</FileType>
               <FilePath>.\NVIC_program.c</FilePath>
             </File>
+            <File>
+              <FileName>SCB_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SCB_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>SCB_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SCB_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>SCB_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SCB_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>SCB_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SCB_program.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Me\College_Courses\Embedded Systems\IEEE\First_Project\Projects\On-Demand-Traffic-Light-Control\Code-With-Keil\on-demand-traffic-light-system.uvprojx
-Project File Date:  09/20/2023
+Project File Date:  09/24/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
@@ -63,7 +63,7 @@ main.c(7): warning: In file included from...
 ./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
 /** @} */  // EXTI_Configurations
            ^
-./EXTI_interface.h(156): warning: no newline at end of file [-Wnewline-eof]
+./EXTI_interface.h(158): warning: no newline at end of file [-Wnewline-eof]
 #endif // EXTI_INTERFACE_H
                           ^
 main.c(8): warning: In file included from...
@@ -86,18 +86,24 @@ volatile u8 longPressDetected = 1;
 main.c(64): warning: // comments are not allowed in this language [-Wcomment]
         MCAL_NVIC_EnableIRQ(10); // For Line 4
                                  ^
-main.c(95): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+main.c(93): warning: implicit declaration of function 'Reset_Handler' [-Wimplicit-function-declaration]
+                Reset_Handler();
+                ^
+main.c(108): warning: implicit declaration of function 'Reset_Handler' [-Wimplicit-function-declaration]
+                Reset_Handler();
+                ^
+main.c(83): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         u8 currButtonState;
            ^
-main.c(178): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+main.c(169): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         u32 yellowBlinkStartTime = STK_GetElapsedCounts();
             ^
-18 warnings generated.
+20 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=4308 RO-data=268 RW-data=20 ZI-data=1640  
+Program Size: Code=4480 RO-data=268 RW-data=16 ZI-data=1640  
 FromELF: creating hex file...
-".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 18 Warning(s).
+".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 20 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -124,9 +130,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/system_stm32f10x.c
 Build Time Elapsed:  00:00:01
 </pre>

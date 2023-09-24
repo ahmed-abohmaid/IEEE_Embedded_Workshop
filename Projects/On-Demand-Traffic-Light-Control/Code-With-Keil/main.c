@@ -69,19 +69,7 @@ int main(void)
 
 	while (1)
 	{
-		if (longPressDetected)
-		{
-			/**
-			 * < Normal case.
-			 * If long press detected don't switch to PEOPLE_GREEN_LED.
-			 */
-			StartTrafficToggling(ROAD);
-		}
-		else
-		{
-			/**< if Short Press Detected */
-			StartTrafficToggling(PEOPLE);
-		}
+		StartTrafficToggling(ROAD);
 	}
 }
 
@@ -99,22 +87,25 @@ void HandleBtnPress(void)
 	{
 		/**< Long press detected */
 
-		longPressDetected = 1;
-
-		DisableAllLeds();
-
-		main(); // Restart the main loop
+		EXTI_DisablePendingBit(4);
+		MCAL_NVIC_ClearPendingIRQ(10);
+		
+		Reset_Handler();
 	}
 	else
 	{
 		/**< Short press detected */
 
+		EXTI_DisablePendingBit(4);
+		MCAL_NVIC_ClearPendingIRQ(10);
+
 		DisableAllLeds();
 
 		BlinkYellow();
-
-		longPressDetected = 0; // Reset the long press flag
-		main();								 // Restart the main loop
+		StartPeople();
+		BlinkYellow();
+		
+		Reset_Handler();
 	}
 }
 
@@ -184,7 +175,7 @@ void BlinkYellow(void)
 		STK_SetDelay_ms(500);
 
 		// Update the start time on each iteration
-		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (500 * (1000000 / 1000)));
+		yellowBlinkStartTime -= (STK_GetElapsedCounts() + (1000 * (1000000 / 1000)));
 	}
 }
 

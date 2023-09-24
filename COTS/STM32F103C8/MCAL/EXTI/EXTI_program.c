@@ -160,6 +160,23 @@ Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
   return Local_FunctionStatus;
 }
 
+Std_ReturnType EXTI_DisablePendingBit(u8 Copy_Line)
+{
+  Std_ReturnType Local_FunctionStatus = E_NOT_OK;
+
+  if (Copy_Line < EXTI_LINES_COUNT)
+  {
+    CLR_BIT(EXTI->PR, Copy_Line);
+    Local_FunctionStatus = E_OK;
+  }
+  else
+  {
+    Local_FunctionStatus = E_NOT_OK;
+  }
+
+  return Local_FunctionStatus;
+}
+
 void EXTI_SetCallBack(void (*pf)(void))
 {
   ptr = pf;

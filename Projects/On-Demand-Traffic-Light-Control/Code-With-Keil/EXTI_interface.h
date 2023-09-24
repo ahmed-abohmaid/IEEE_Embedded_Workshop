@@ -144,6 +144,8 @@ Std_ReturnType EXTI_DisableLine(u8 Copy_Line);
  */
 Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 
+Std_ReturnType EXTI_DisablePendingBit(u8 Copy_Line);
+
 /**
  * < Callback Function for interrupts.
  * This function take interrupt handler function as a parameter to pass it to the pointer to function global variable (ptr).

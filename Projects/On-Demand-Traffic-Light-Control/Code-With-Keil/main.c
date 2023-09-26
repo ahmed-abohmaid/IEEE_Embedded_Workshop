@@ -69,7 +69,7 @@ int main(void)
 	HAL_LED_Init(GPIO_PORTA, SHARED_YELLOW_LED);
 
 	/**< Set push button pin as input pull down */
-	MCAL_GPIO_SetPinMode(GPIO_PORTA, GPIO_PIN4, GPIO_INPUT_PULL_DOWN_MOD);
+	HAL_PushButton_Init(GPIO_PORTA, GPIO_PIN4, ACTIVE_HIGH);
 
 	/**< Init EXTI Configurations */
 	EXTI_vInit();

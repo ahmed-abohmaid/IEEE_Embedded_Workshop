@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\on-demand-traffic-light-system.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\on-demand-traffic-light-system.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Tue Sep 26 18:05:11 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Tue Sep 26 19:21:35 2023
 <BR><P>
 <H3>Maximum Stack Usage =        132 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; StartTrafficToggling &rArr; StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+__rt_entry_main &rArr; main &rArr; StartTrafficToggling &rArr; StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 <P>
 <H3>
 Functions with no stack information
@@ -208,7 +208,7 @@ Global Symbols
 
 <P><STRONG><a name="[41]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; StartTrafficToggling &rArr; StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; StartTrafficToggling &rArr; StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -473,7 +473,7 @@ Global Symbols
 
 <P><STRONG><a name="[99]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[4a]"></a>BlinkYellow</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, main.o(.text.BlinkYellow))
+<P><STRONG><a name="[4a]"></a>BlinkYellow</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, main.o(.text.BlinkYellow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = BlinkYellow &rArr; HAL_LED_Blink &rArr; STK_SetDelay_ms &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
@@ -490,11 +490,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LED_Off
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPeople
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPedestrains
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlinkYellow
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartRoad
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartRoad
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPeople
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPedestrains
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleBtnPress
 </UL>
 
@@ -546,10 +546,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_SetPinValue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPeople
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPedestrains
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartRoad
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartRoad
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPeople
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPedestrains
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_BlinkYellow
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTrafficToggling
@@ -560,12 +560,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_SetPinValue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPeople
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPedestrains
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartRoad
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartRoad
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPeople
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPedestrains
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_BlinkYellow
-<LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleBtnPress
 </UL>
 
 <P><STRONG><a name="[58]"></a>HAL_PushButton_Init</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, button_program.o(.text.HAL_PushButton_Init))
@@ -577,15 +576,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[37]"></a>HandleBtnPress</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, main.o(.text.HandleBtnPress))
+<P><STRONG><a name="[37]"></a>HandleBtnPress</STRONG> (Thumb, 198 bytes, Stack size 16 bytes, main.o(.text.HandleBtnPress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = HandleBtnPress &rArr; Interrupt_StartRoad &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartRoad
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPeople
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_StartPedestrains
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Interrupt_BlinkYellow
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_NVIC_ClearPendingIRQ
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LED_On
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_GetPinValue
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_DisablePendingBit
 </UL>
@@ -600,8 +598,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleBtnPress
 </UL>
 
-<P><STRONG><a name="[5d]"></a>Interrupt_StartPeople</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, main.o(.text.Interrupt_StartPeople))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Interrupt_StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+<P><STRONG><a name="[5d]"></a>Interrupt_StartPedestrains</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, main.o(.text.Interrupt_StartPedestrains))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Interrupt_StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LED_Off
@@ -690,14 +688,14 @@ Global Symbols
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STK_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPeople
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPedestrains
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlinkYellow
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartRoad
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LED_Blink
 </UL>
 
-<P><STRONG><a name="[63]"></a>StartPeople</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, main.o(.text.StartPeople))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+<P><STRONG><a name="[63]"></a>StartPedestrains</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, main.o(.text.StartPedestrains))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STK_SetDelay_ms
@@ -707,7 +705,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTrafficToggling
 </UL>
 
-<P><STRONG><a name="[64]"></a>StartRoad</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, main.o(.text.StartRoad))
+<P><STRONG><a name="[64]"></a>StartRoad</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, main.o(.text.StartRoad))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StartRoad &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableAllLeds
@@ -719,9 +717,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[65]"></a>StartTrafficToggling</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, main.o(.text.StartTrafficToggling))
-<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = StartTrafficToggling &rArr; StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = StartTrafficToggling &rArr; StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPeople
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPedestrains
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlinkYellow
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartRoad
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LED_Off
@@ -737,7 +735,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[42]"></a>main</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = main &rArr; StartTrafficToggling &rArr; StartPeople &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = main &rArr; StartTrafficToggling &rArr; StartPedestrains &rArr; DisableAllLeds &rArr; HAL_LED_Off &rArr; MCAL_GPIO_SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTrafficToggling
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_NVIC_EnableIRQ

@@ -14,13 +14,13 @@
 
 /**< APP */
 
-#define ROAD_GREEN_LED 						GPIO_PIN1
-#define SHARED_YELLOW_LED 				GPIO_PIN2
-#define ROAD_RED_LED 							GPIO_PIN3
-#define PEOPLE_RED_LED 						GPIO_PIN6
-#define PEOPLE_GREEN_LED 					GPIO_PIN5
-#define PEOPLE 										0
-#define ROAD 											1
+#define ROAD_GREEN_LED 									GPIO_PIN1
+#define SHARED_YELLOW_LED 							GPIO_PIN2
+#define ROAD_RED_LED 										GPIO_PIN3
+#define PEDESTRAINS_RED_LED 						GPIO_PIN6
+#define PEDESTRAINS_GREEN_LED 					GPIO_PIN5
+#define PEDESTRAINS 										0
+#define ROAD 														1
 
 /**< The main logic of the traffic light control system. */
 void StartTrafficToggling(u8);
@@ -28,8 +28,8 @@ void StartTrafficToggling(u8);
 /**< Enable the green Led on the road side */
 void StartRoad(void);
 
-/**< Enable the green Led on the people side */
-void StartPeople(void);
+/**< Enable the green Led on the PEDESTRAINS side */
+void StartPedestrains(void);
 
 /**< Blink the yellow Led on both sides */
 void BlinkYellow(void);
@@ -41,17 +41,22 @@ void BlinkYellow(void);
  */
 void Interrupt_BlinkYellow(void);
 void Interrupt_StartRoad(void);
-void Interrupt_StartPeople(void);
+void Interrupt_StartPedestrains(void);
 /** @} */
 
 /**< Turn off all leds on both sides */
 void DisableAllLeds(void);
 
 /**
- * < Handle the button press from people side.
- * This Button allow people to make request to cross the road.
+ * < Handle the button press from Pedestrains side.
+ * This Button allow Pedestrains to make request to cross the road.
  */
 void HandleBtnPress(void);
+
+/**< Global Variable to check for yellow blinking. */
+u8 isYellowBlink = 0;
+/**< Global Variable to check if there is short press after long one. */
+u8 isDoublePress = 0;
 
 int main(void)
 {
@@ -64,8 +69,8 @@ int main(void)
 	/**< Set LED Pins as output push pull */
 	HAL_LED_Init(GPIO_PORTA, ROAD_RED_LED);
 	HAL_LED_Init(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_Init(GPIO_PORTA, PEOPLE_GREEN_LED);
-	HAL_LED_Init(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_Init(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
+	HAL_LED_Init(GPIO_PORTA, PEDESTRAINS_RED_LED);
 	HAL_LED_Init(GPIO_PORTA, SHARED_YELLOW_LED);
 
 	/**< Set push button pin as input pull down */
@@ -85,13 +90,20 @@ int main(void)
 void HandleBtnPress(void)
 {
 
-	for (int i = 50000; i > 0; i--)
+	for (int i = 40000; i > 0; i--)
 		;
 
-	u8 currButtonState;
-	MCAL_GPIO_GetPinValue(GPIO_PORTA, GPIO_PIN4, &currButtonState);
-
-	if (currButtonState == 1)
+	u8 isLongPress;
+	MCAL_GPIO_GetPinValue(GPIO_PORTA, GPIO_PIN4, &isLongPress);
+	if (isLongPress == 1)
+	{
+		/*****************< User Story 5 - Double Press 										*****************/
+		isDoublePress = 1;
+	}
+	
+	/*****************< User Story 2 - Long Press 												*****************/
+	/*****************< User Story 4 - Yellow Is Blinking 								*****************/
+	if (isLongPress == 1 || isDoublePress == 1 || isYellowBlink == 1)
 	{
 		/**< Long press detected */
 
@@ -100,21 +112,31 @@ void HandleBtnPress(void)
 	}
 	else
 	{
-		/**< Short press detected */
+		/*****************< User Story 3 - Pedestrains Green Led Is On  		*****************/
+		u8 isPedestrainsOn;
+		MCAL_GPIO_GetPinValue(GPIO_PORTA, PEDESTRAINS_GREEN_LED, &isPedestrainsOn);
+		if (isPedestrainsOn == 1)
+		{
+			EXTI_DisablePendingBit(4);
+		  MCAL_NVIC_ClearPendingIRQ(10);
+		}
+		else
+		{
+			/*****************< User Story 1 - Short press detected			 			*****************/		
 
-		DisableAllLeds();
+			DisableAllLeds();
 
-		Interrupt_BlinkYellow();
+			Interrupt_BlinkYellow();
 
-		Interrupt_StartPeople();
+			Interrupt_StartPedestrains();
 
-		Interrupt_BlinkYellow();
+			Interrupt_BlinkYellow();
 
-		Interrupt_StartRoad();
+			Interrupt_StartRoad();
 
-		HAL_LED_On(GPIO_PORTA, ROAD_RED_LED);
-		EXTI_DisablePendingBit(4);
-		MCAL_NVIC_ClearPendingIRQ(10);
+			EXTI_DisablePendingBit(4);
+			MCAL_NVIC_ClearPendingIRQ(10);
+		}
 	}
 }
 
@@ -131,7 +153,7 @@ void StartTrafficToggling(u8 starter)
 
 		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
 
-		StartPeople();
+		StartPedestrains();
 
 		BlinkYellow();
 	}
@@ -140,7 +162,7 @@ void StartTrafficToggling(u8 starter)
 
 		HAL_LED_Off(GPIO_PORTA, SHARED_YELLOW_LED);
 
-		StartPeople();
+		StartPedestrains();
 
 		BlinkYellow();
 
@@ -154,28 +176,37 @@ void StartTrafficToggling(u8 starter)
 
 void StartRoad(void)
 {
+	isYellowBlink = 0;
+	isDoublePress = 0;
+	
 	DisableAllLeds();
 	HAL_LED_On(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_On(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_On(GPIO_PORTA, PEDESTRAINS_RED_LED);
 	STK_SetDelay_ms(5000);
 
 	HAL_LED_Off(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_RED_LED);
 }
 
-void StartPeople(void)
+void StartPedestrains(void)
 {
+	isYellowBlink = 0;
+	isDoublePress = 0;
+	
 	DisableAllLeds();
-	HAL_LED_On(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_On(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
 	HAL_LED_On(GPIO_PORTA, ROAD_RED_LED);
 	STK_SetDelay_ms(5000);
 
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
 	HAL_LED_Off(GPIO_PORTA, ROAD_RED_LED);
 }
 
 void BlinkYellow(void)
 {
+	isYellowBlink = 1;
+	isDoublePress = 0;
+	
 	DisableAllLeds();
 	STK_Reset();
 	u32 yellowBlinkStartTime = STK_GetElapsedCounts();
@@ -195,23 +226,23 @@ void Interrupt_StartRoad(void)
 {
 	DisableAllLeds();
 	HAL_LED_On(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_On(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_On(GPIO_PORTA, PEDESTRAINS_RED_LED);
 	for (u32 i = 0; i < 166000; i++)
 		;
 
 	HAL_LED_Off(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_RED_LED);
 }
 
-void Interrupt_StartPeople(void)
+void Interrupt_StartPedestrains(void)
 {
 	DisableAllLeds();
-	HAL_LED_On(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_On(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
 	HAL_LED_On(GPIO_PORTA, ROAD_RED_LED);
 	for (u32 i = 0; i < 166000; i++)
 		;
 
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_GREEN_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
 	HAL_LED_Off(GPIO_PORTA, ROAD_RED_LED);
 }
 
@@ -240,6 +271,6 @@ void DisableAllLeds(void)
 {
 	HAL_LED_Off(GPIO_PORTA, ROAD_RED_LED);
 	HAL_LED_Off(GPIO_PORTA, ROAD_GREEN_LED);
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_GREEN_LED);
-	HAL_LED_Off(GPIO_PORTA, PEOPLE_RED_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_GREEN_LED);
+	HAL_LED_Off(GPIO_PORTA, PEDESTRAINS_RED_LED);
 }

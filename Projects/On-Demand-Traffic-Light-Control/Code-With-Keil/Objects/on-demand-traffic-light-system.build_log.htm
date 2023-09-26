@@ -27,105 +27,109 @@ Project File Date:  09/24/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-BUTTON_Program.c(11): warning: In file included from...
+main.c(1): warning: In file included from...
 ./STD_TYPES.h(32): warning: // comments are not allowed in this language [-Wcomment]
 #endif // STD_TYPES_H
        ^
 ./STD_TYPES.h(32): warning: no newline at end of file [-Wnewline-eof]
 #endif // STD_TYPES_H
                      ^
-BUTTON_Program.c(12): warning: In file included from...
+main.c(2): warning: In file included from...
 ./BIT_MATH.h(15): warning: // comments are not allowed in this language [-Wcomment]
 #endif // BIT_MATH_H
        ^
 ./BIT_MATH.h(15): warning: no newline at end of file [-Wnewline-eof]
 #endif // BIT_MATH_H
                     ^
-BUTTON_Program.c(15): warning: In file included from...
+main.c(4): warning: In file included from...
+./RCC_interface.h(162): warning: no newline at end of file [-Wnewline-eof]
+#endif /**< RCC_INTERFACE_H_ */
+                               ^
+main.c(5): warning: In file included from...
 ./GPIO_interface.h(33): warning: // comments are not allowed in this language [-Wcomment]
 /** @} */ // End of GPIO_Values group
           ^
 ./GPIO_interface.h(137): warning: no newline at end of file [-Wnewline-eof]
 #endif // GPIO_INTERFACE_H
                           ^
-BUTTON_Program.c(17): warning: In file included from...
+main.c(6): warning: In file included from...
 ./STK_interface.h(147): warning: // comments are not allowed in this language [-Wcomment]
 #endif // STK_INTERFACE_H
        ^
 ./STK_interface.h(147): warning: no newline at end of file [-Wnewline-eof]
 #endif // STK_INTERFACE_H
                          ^
-BUTTON_Program.c(19): warning: In file included from...
+main.c(7): warning: In file included from...
+./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */  // EXTI_Configurations
+           ^
+./EXTI_interface.h(158): warning: no newline at end of file [-Wnewline-eof]
+#endif // EXTI_INTERFACE_H
+                          ^
+main.c(8): warning: In file included from...
+./NVIC_interface.h(176): warning: // comments are not allowed in this language [-Wcomment]
+#endif // NVIC_INTERFACE_H
+       ^
+./NVIC_interface.h(176): warning: no newline at end of file [-Wnewline-eof]
+#endif // NVIC_INTERFACE_H
+                          ^
+main.c(9): warning: In file included from...
+./AFIO_interface.h(38): warning: // comments are not allowed in this language [-Wcomment]
+#endif // AFIO_INTERFACE_H
+       ^
+./AFIO_interface.h(38): warning: no newline at end of file [-Wnewline-eof]
+#endif // AFIO_INTERFACE_H
+                          ^
+main.c(10): warning: In file included from...
+./SCB_interface.h(27): warning: // comments are not allowed in this language [-Wcomment]
+#endif // SCB_INTERFACE_H
+       ^
+./SCB_interface.h(27): warning: no newline at end of file [-Wnewline-eof]
+#endif // SCB_INTERFACE_H
+                         ^
+main.c(13): warning: In file included from...
 ./BUTTON_interface.h(81): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
     PB_PIN15, /**< Pin 15 */ 
             ^
-BUTTON_Program.c(33): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
-                        Copy_ActiveLevel = GPIO_INPUT_PULL_UP_MOD;
-                                           ^
-./GPIO_interface.h(67): note: expanded from macro 'GPIO_INPUT_PULL_UP_MOD'
-#define GPIO_INPUT_PULL_UP_MOD                   0b1000 /**< GPIO Input Pull up Mode */
-                                                 ^
-BUTTON_Program.c(33): warning: integer constant not in range of enumerated type 'PushButton_State_t' [-Wassign-enum]
-./GPIO_interface.h(67): note: expanded from macro 'GPIO_INPUT_PULL_UP_MOD'
-#define GPIO_INPUT_PULL_UP_MOD                   0b1000 /**< GPIO Input Pull up Mode */
-                                                 ^
-BUTTON_Program.c(45): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
-                        Copy_ActiveLevel = GPIO_INPUT_PULL_DOWN_MOD;
-                                           ^
-./GPIO_interface.h(66): note: expanded from macro 'GPIO_INPUT_PULL_DOWN_MOD'
-#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
-                                                 ^
-BUTTON_Program.c(45): warning: integer constant not in range of enumerated type 'PushButton_State_t' [-Wassign-enum]
-./GPIO_interface.h(66): note: expanded from macro 'GPIO_INPUT_PULL_DOWN_MOD'
-#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
-                                                 ^
-BUTTON_Program.c(74): warning: '_Bool' is a C99 extension [-Wc99-extensions]
-  bool currentButtonState;
-  ^
-C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
-    #define bool _Bool
-                 ^
-BUTTON_Program.c(75): warning: '_Bool' is a C99 extension [-Wc99-extensions]
-  bool lastButtonState;
-  ^
-C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
-    #define bool _Bool
-                 ^
-BUTTON_Program.c(83): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-  for (u32 i = 0; i < numIterations; i++)
-       ^
-BUTTON_Program.c(83): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-BUTTON_Program.c(86): warning: incompatible pointer types passing 'bool *' to parameter of type 'u8 *' (aka 'unsigned char *') [-Wincompatible-pointer-types]
-    if (MCAL_GPIO_GetPinValue(Copy_ButtonPortId, Copy_ButtonPinId, &currentButtonState) != E_OK)
-                                                                   ^~~~~~~~~~~~~~~~~~~
-./GPIO_interface.h(133): note: passing argument to parameter 'Copy_PinReturnValue' here
-Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_PinReturnValue);
-                                                                        ^
-BUTTON_Program.c(91): warning: // comments are not allowed in this language [-Wcomment]
-    u32 currentMillis = STK_GetElapsedCounts(); // Get the current time in milliseconds
-                                                ^
-BUTTON_Program.c(91): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-    u32 currentMillis = STK_GetElapsedCounts(); // Get the current time in milliseconds
-        ^
-BUTTON_Program.c(123): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-BUTTON_Program.c(74): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-  bool currentButtonState;
-       ^
-BUTTON_Program.c(94): warning: variable 'lastButtonState' may be uninitialized when used here [-Wconditional-uninitialized]
-    if (currentButtonState != lastButtonState)
-                              ^~~~~~~~~~~~~~~
-BUTTON_Program.c(75): note: initialize the variable 'lastButtonState' to silence this warning
-  bool lastButtonState;
-                      ^
-                       = false
-23 warnings generated.
-compiling BUTTON_Program.c...
+main.c(57): warning: no previous extern declaration for non-static variable 'isYellowBlink' [-Wmissing-variable-declarations]
+u8 isYellowBlink = 0;
+   ^
+main.c(57): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+u8 isYellowBlink = 0;
+^
+main.c(59): warning: no previous extern declaration for non-static variable 'isDoublePress' [-Wmissing-variable-declarations]
+u8 isDoublePress = 0;
+   ^
+main.c(59): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+u8 isDoublePress = 0;
+^
+main.c(82): warning: // comments are not allowed in this language [-Wcomment]
+        MCAL_NVIC_EnableIRQ(10); // For Line 4
+                                 ^
+main.c(93): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 40000; i > 0; i--)
+             ^
+main.c(93): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(96): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        u8 isLongPress;
+           ^
+main.c(212): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        u32 yellowBlinkStartTime = STK_GetElapsedCounts();
+            ^
+main.c(230): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (u32 i = 0; i < 166000; i++)
+             ^
+main.c(230): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(242): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (u32 i = 0; i < 166000; i++)
+             ^
+main.c(242): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+29 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=4936 RO-data=268 RW-data=16 ZI-data=1640  
+Program Size: Code=5088 RO-data=268 RW-data=16 ZI-data=1648  
 FromELF: creating hex file...
-".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 23 Warning(s).
+".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -152,10 +156,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/system_stm32f10x.c
       Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

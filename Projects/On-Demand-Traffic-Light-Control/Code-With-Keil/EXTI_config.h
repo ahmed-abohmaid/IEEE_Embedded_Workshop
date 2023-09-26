@@ -63,7 +63,7 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     /* Configuration for EXTI Line 4 */
     {
         .GPIO_PortMap = EXTI_PORTMAP_GPIOA,
-        .TriggerType = EXTI_BOTH_EDGES,
+        .TriggerType = EXTI_RISING_EDGE,
         .LineEnabled = EXTI_LINE_ENABLED,
     },
 

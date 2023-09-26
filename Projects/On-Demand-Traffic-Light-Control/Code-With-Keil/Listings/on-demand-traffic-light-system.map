@@ -49,22 +49,21 @@ Section Cross References
     main.o(.text.main) refers to rcc_program.o(.text.Mcal_Rcc_InitSysClock) for Mcal_Rcc_InitSysClock
     main.o(.text.main) refers to rcc_program.o(.text.Mcal_Rcc_EnablePeripheral) for Mcal_Rcc_EnablePeripheral
     main.o(.text.main) refers to led_program.o(.text.HAL_LED_Init) for HAL_LED_Init
+    main.o(.text.main) refers to gpio_program.o(.text.MCAL_GPIO_SetPinMode) for MCAL_GPIO_SetPinMode
     main.o(.text.main) refers to exti_program.o(.text.EXTI_vInit) for EXTI_vInit
-    main.o(.text.main) refers to nvic_program.o(.text.MCAL_NVIC_EnableIRQ) for MCAL_NVIC_EnableIRQ
     main.o(.text.main) refers to main.o(.text.HandleBtnPress) for HandleBtnPress
     main.o(.text.main) refers to exti_program.o(.text.EXTI_SetCallBack) for EXTI_SetCallBack
-    main.o(.text.main) refers to button_program.o(.text.HAL_PushButton_Init) for HAL_PushButton_Init
+    main.o(.text.main) refers to nvic_program.o(.text.MCAL_NVIC_EnableIRQ) for MCAL_NVIC_EnableIRQ
     main.o(.text.main) refers to main.o(.text.StartTrafficToggling) for StartTrafficToggling
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
-    main.o(.text.HandleBtnPress) refers to stk_program.o(.text.STK_Reset) for STK_Reset
-    main.o(.text.HandleBtnPress) refers to stk_program.o(.text.STK_SetDelay_ms) for STK_SetDelay_ms
     main.o(.text.HandleBtnPress) refers to gpio_program.o(.text.MCAL_GPIO_GetPinValue) for MCAL_GPIO_GetPinValue
     main.o(.text.HandleBtnPress) refers to exti_program.o(.text.EXTI_DisablePendingBit) for EXTI_DisablePendingBit
     main.o(.text.HandleBtnPress) refers to nvic_program.o(.text.MCAL_NVIC_ClearPendingIRQ) for MCAL_NVIC_ClearPendingIRQ
-    main.o(.text.HandleBtnPress) refers to startup_stm32f10x_md.o(.text) for Reset_Handler
     main.o(.text.HandleBtnPress) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
-    main.o(.text.HandleBtnPress) refers to main.o(.text.BlinkYellow) for BlinkYellow
-    main.o(.text.HandleBtnPress) refers to main.o(.text.StartPeople) for StartPeople
+    main.o(.text.HandleBtnPress) refers to main.o(.text.Interrupt_BlinkYellow) for Interrupt_BlinkYellow
+    main.o(.text.HandleBtnPress) refers to main.o(.text.Interrupt_StartPeople) for Interrupt_StartPeople
+    main.o(.text.HandleBtnPress) refers to main.o(.text.Interrupt_StartRoad) for Interrupt_StartRoad
+    main.o(.text.HandleBtnPress) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
     main.o(.ARM.exidx.text.HandleBtnPress) refers to main.o(.text.HandleBtnPress) for [Anonymous Symbol]
     main.o(.text.StartTrafficToggling) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
     main.o(.text.StartTrafficToggling) refers to main.o(.text.StartRoad) for StartRoad
@@ -73,19 +72,33 @@ Section Cross References
     main.o(.ARM.exidx.text.StartTrafficToggling) refers to main.o(.text.StartTrafficToggling) for [Anonymous Symbol]
     main.o(.text.DisableAllLeds) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
     main.o(.ARM.exidx.text.DisableAllLeds) refers to main.o(.text.DisableAllLeds) for [Anonymous Symbol]
+    main.o(.text.Interrupt_BlinkYellow) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
+    main.o(.text.Interrupt_BlinkYellow) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
+    main.o(.ARM.exidx.text.Interrupt_BlinkYellow) refers to main.o(.text.Interrupt_BlinkYellow) for [Anonymous Symbol]
+    main.o(.text.Interrupt_StartPeople) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
+    main.o(.text.Interrupt_StartPeople) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
+    main.o(.text.Interrupt_StartPeople) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
+    main.o(.ARM.exidx.text.Interrupt_StartPeople) refers to main.o(.text.Interrupt_StartPeople) for [Anonymous Symbol]
+    main.o(.text.Interrupt_StartRoad) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
+    main.o(.text.Interrupt_StartRoad) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
+    main.o(.text.Interrupt_StartRoad) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
+    main.o(.ARM.exidx.text.Interrupt_StartRoad) refers to main.o(.text.Interrupt_StartRoad) for [Anonymous Symbol]
+    main.o(.text.StartRoad) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
+    main.o(.text.StartRoad) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
+    main.o(.text.StartRoad) refers to stk_program.o(.text.STK_SetDelay_ms) for STK_SetDelay_ms
+    main.o(.text.StartRoad) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
+    main.o(.ARM.exidx.text.StartRoad) refers to main.o(.text.StartRoad) for [Anonymous Symbol]
+    main.o(.text.BlinkYellow) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
     main.o(.text.BlinkYellow) refers to stk_program.o(.text.STK_Reset) for STK_Reset
     main.o(.text.BlinkYellow) refers to stk_program.o(.text.STK_GetElapsedCounts) for STK_GetElapsedCounts
     main.o(.text.BlinkYellow) refers to led_program.o(.text.HAL_LED_Blink) for HAL_LED_Blink
     main.o(.text.BlinkYellow) refers to stk_program.o(.text.STK_SetDelay_ms) for STK_SetDelay_ms
     main.o(.ARM.exidx.text.BlinkYellow) refers to main.o(.text.BlinkYellow) for [Anonymous Symbol]
+    main.o(.text.StartPeople) refers to main.o(.text.DisableAllLeds) for DisableAllLeds
     main.o(.text.StartPeople) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
     main.o(.text.StartPeople) refers to stk_program.o(.text.STK_SetDelay_ms) for STK_SetDelay_ms
     main.o(.text.StartPeople) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
     main.o(.ARM.exidx.text.StartPeople) refers to main.o(.text.StartPeople) for [Anonymous Symbol]
-    main.o(.text.StartRoad) refers to led_program.o(.text.HAL_LED_On) for HAL_LED_On
-    main.o(.text.StartRoad) refers to stk_program.o(.text.STK_SetDelay_ms) for STK_SetDelay_ms
-    main.o(.text.StartRoad) refers to led_program.o(.text.HAL_LED_Off) for HAL_LED_Off
-    main.o(.ARM.exidx.text.StartRoad) refers to main.o(.text.StartRoad) for [Anonymous Symbol]
     afio_program.o(.ARM.exidx.text.MCAL_AFIO_SetEXTIConfiguration) refers to afio_program.o(.text.MCAL_AFIO_SetEXTIConfiguration) for [Anonymous Symbol]
     button_program.o(.text.HAL_PushButton_Init) refers to gpio_program.o(.text.MCAL_GPIO_SetPinMode) for MCAL_GPIO_SetPinMode
     button_program.o(.text.HAL_PushButton_Init) refers to gpio_program.o(.text.MCAL_GPIO_SetPinValue) for MCAL_GPIO_SetPinValue
@@ -292,14 +305,17 @@ Removing Unused input sections from the image.
     Removing main.o(.ARM.exidx.text.HandleBtnPress), (8 bytes).
     Removing main.o(.ARM.exidx.text.StartTrafficToggling), (8 bytes).
     Removing main.o(.ARM.exidx.text.DisableAllLeds), (8 bytes).
+    Removing main.o(.ARM.exidx.text.Interrupt_BlinkYellow), (8 bytes).
+    Removing main.o(.ARM.exidx.text.Interrupt_StartPeople), (8 bytes).
+    Removing main.o(.ARM.exidx.text.Interrupt_StartRoad), (8 bytes).
+    Removing main.o(.ARM.exidx.text.StartRoad), (8 bytes).
     Removing main.o(.ARM.exidx.text.BlinkYellow), (8 bytes).
     Removing main.o(.ARM.exidx.text.StartPeople), (8 bytes).
-    Removing main.o(.ARM.exidx.text.StartRoad), (8 bytes).
-    Removing main.o(.data.longPressDetected), (1 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing afio_program.o(.text), (0 bytes).
     Removing afio_program.o(.ARM.exidx.text.MCAL_AFIO_SetEXTIConfiguration), (8 bytes).
     Removing button_program.o(.text), (0 bytes).
+    Removing button_program.o(.text.HAL_PushButton_Init), (108 bytes).
     Removing button_program.o(.ARM.exidx.text.HAL_PushButton_Init), (8 bytes).
     Removing button_program.o(.text.HAL_PushButton_Read), (242 bytes).
     Removing button_program.o(.ARM.exidx.text.HAL_PushButton_Read), (8 bytes).
@@ -327,7 +343,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.data.SystemCoreClock), (4 bytes).
     Removing system_stm32f10x.o(.rodata.AHBPrescTable), (16 bytes).
 
-80 unused section(s) (total 2527 bytes) removed from the image.
+83 unused section(s) (total 2658 bytes) removed from the image.
 
 ==============================================================================
 
@@ -464,43 +480,45 @@ Image Symbol Table
     .text                                    0x08000240   Section        2  use_no_semi.o(.text)
     .text                                    0x08000242   Section        0  indicate_semi.o(.text)
     [Anonymous Symbol]                       0x08000244   Section        0  main.o(.text.BlinkYellow)
-    [Anonymous Symbol]                       0x0800029c   Section        0  main.o(.text.DisableAllLeds)
-    [Anonymous Symbol]                       0x080002c8   Section        0  exti_program.o(.text.EXTI4_IRQHandler)
-    [Anonymous Symbol]                       0x080002d8   Section        0  exti_program.o(.text.EXTI_DisablePendingBit)
-    [Anonymous Symbol]                       0x08000314   Section        0  exti_program.o(.text.EXTI_SetCallBack)
-    [Anonymous Symbol]                       0x08000328   Section        0  exti_program.o(.text.EXTI_vInit)
-    [Anonymous Symbol]                       0x0800045c   Section        0  led_program.o(.text.HAL_LED_Blink)
-    [Anonymous Symbol]                       0x080004c4   Section        0  led_program.o(.text.HAL_LED_Init)
-    [Anonymous Symbol]                       0x080004e4   Section        0  led_program.o(.text.HAL_LED_Off)
-    [Anonymous Symbol]                       0x08000504   Section        0  led_program.o(.text.HAL_LED_On)
-    [Anonymous Symbol]                       0x08000524   Section        0  button_program.o(.text.HAL_PushButton_Init)
-    [Anonymous Symbol]                       0x08000590   Section        0  main.o(.text.HandleBtnPress)
-    [Anonymous Symbol]                       0x080005f0   Section        0  afio_program.o(.text.MCAL_AFIO_SetEXTIConfiguration)
-    [Anonymous Symbol]                       0x08000688   Section        0  gpio_program.o(.text.MCAL_GPIO_GetPinValue)
-    [Anonymous Symbol]                       0x08000740   Section        0  gpio_program.o(.text.MCAL_GPIO_SetPinMode)
-    [Anonymous Symbol]                       0x08000928   Section        0  gpio_program.o(.text.MCAL_GPIO_SetPinValue)
-    [Anonymous Symbol]                       0x08000a78   Section        0  nvic_program.o(.text.MCAL_NVIC_ClearPendingIRQ)
-    [Anonymous Symbol]                       0x08000b04   Section        0  nvic_program.o(.text.MCAL_NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x08000b98   Section        0  rcc_program.o(.text.Mcal_Rcc_EnablePeripheral)
-    [Anonymous Symbol]                       0x08000c30   Section        0  rcc_program.o(.text.Mcal_Rcc_InitSysClock)
-    [Anonymous Symbol]                       0x08000c7c   Section        0  stk_program.o(.text.STK_GetElapsedCounts)
-    [Anonymous Symbol]                       0x08000ce0   Section        0  stk_program.o(.text.STK_Reset)
-    [Anonymous Symbol]                       0x08000d10   Section        0  stk_program.o(.text.STK_SetDelay_ms)
-    SetSysClock                              0x08000d91   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
-    [Anonymous Symbol]                       0x08000d90   Section        0  system_stm32f10x.o(.text.SetSysClock)
-    SetSysClockTo72                          0x08000d99   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x08000d98   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x08000ebc   Section        0  main.o(.text.StartPeople)
-    [Anonymous Symbol]                       0x08000ef8   Section        0  main.o(.text.StartRoad)
-    [Anonymous Symbol]                       0x08000f34   Section        0  main.o(.text.StartTrafficToggling)
-    [Anonymous Symbol]                       0x08000f98   Section        0  system_stm32f10x.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x08001000   Section        0  main.o(.text.main)
-    x$fpl$ffixu                              0x0800106c   Section       62  ffixu.o(x$fpl$ffixu)
-    x$fpl$ffltu                              0x080010ac   Section       38  fflt_clz.o(x$fpl$ffltu)
-    x$fpl$fmul                               0x080010d4   Section      258  fmul.o(x$fpl$fmul)
-    x$fpl$fnaninf                            0x080011d6   Section      140  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fretinf                            0x08001262   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$usenofp                            0x0800126c   Section        0  usenofp.o(x$fpl$usenofp)
+    [Anonymous Symbol]                       0x080002a0   Section        0  main.o(.text.DisableAllLeds)
+    [Anonymous Symbol]                       0x080002cc   Section        0  exti_program.o(.text.EXTI4_IRQHandler)
+    [Anonymous Symbol]                       0x080002dc   Section        0  exti_program.o(.text.EXTI_DisablePendingBit)
+    [Anonymous Symbol]                       0x08000320   Section        0  exti_program.o(.text.EXTI_SetCallBack)
+    [Anonymous Symbol]                       0x08000334   Section        0  exti_program.o(.text.EXTI_vInit)
+    [Anonymous Symbol]                       0x08000494   Section        0  led_program.o(.text.HAL_LED_Blink)
+    [Anonymous Symbol]                       0x080004fc   Section        0  led_program.o(.text.HAL_LED_Init)
+    [Anonymous Symbol]                       0x0800051c   Section        0  led_program.o(.text.HAL_LED_Off)
+    [Anonymous Symbol]                       0x0800053c   Section        0  led_program.o(.text.HAL_LED_On)
+    [Anonymous Symbol]                       0x0800055c   Section        0  main.o(.text.HandleBtnPress)
+    [Anonymous Symbol]                       0x080005cc   Section        0  main.o(.text.Interrupt_BlinkYellow)
+    [Anonymous Symbol]                       0x08000650   Section        0  main.o(.text.Interrupt_StartPeople)
+    [Anonymous Symbol]                       0x080006a0   Section        0  main.o(.text.Interrupt_StartRoad)
+    [Anonymous Symbol]                       0x080006f0   Section        0  afio_program.o(.text.MCAL_AFIO_SetEXTIConfiguration)
+    [Anonymous Symbol]                       0x08000788   Section        0  gpio_program.o(.text.MCAL_GPIO_GetPinValue)
+    [Anonymous Symbol]                       0x08000840   Section        0  gpio_program.o(.text.MCAL_GPIO_SetPinMode)
+    [Anonymous Symbol]                       0x08000a28   Section        0  gpio_program.o(.text.MCAL_GPIO_SetPinValue)
+    [Anonymous Symbol]                       0x08000b78   Section        0  nvic_program.o(.text.MCAL_NVIC_ClearPendingIRQ)
+    [Anonymous Symbol]                       0x08000c04   Section        0  nvic_program.o(.text.MCAL_NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x08000c98   Section        0  rcc_program.o(.text.Mcal_Rcc_EnablePeripheral)
+    [Anonymous Symbol]                       0x08000d30   Section        0  rcc_program.o(.text.Mcal_Rcc_InitSysClock)
+    [Anonymous Symbol]                       0x08000d7c   Section        0  stk_program.o(.text.STK_GetElapsedCounts)
+    [Anonymous Symbol]                       0x08000de0   Section        0  stk_program.o(.text.STK_Reset)
+    [Anonymous Symbol]                       0x08000e10   Section        0  stk_program.o(.text.STK_SetDelay_ms)
+    SetSysClock                              0x08000e91   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
+    [Anonymous Symbol]                       0x08000e90   Section        0  system_stm32f10x.o(.text.SetSysClock)
+    SetSysClockTo72                          0x08000e99   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08000e98   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08000fbc   Section        0  main.o(.text.StartPeople)
+    [Anonymous Symbol]                       0x08000ffc   Section        0  main.o(.text.StartRoad)
+    [Anonymous Symbol]                       0x0800103c   Section        0  main.o(.text.StartTrafficToggling)
+    [Anonymous Symbol]                       0x080010a0   Section        0  system_stm32f10x.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x08001108   Section        0  main.o(.text.main)
+    x$fpl$ffixu                              0x08001174   Section       62  ffixu.o(x$fpl$ffixu)
+    x$fpl$ffltu                              0x080011b4   Section       38  fflt_clz.o(x$fpl$ffltu)
+    x$fpl$fmul                               0x080011dc   Section      258  fmul.o(x$fpl$fmul)
+    x$fpl$fnaninf                            0x080012de   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x0800136a   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$usenofp                            0x08001374   Section        0  usenofp.o(x$fpl$usenofp)
     .bss                                     0x20000010   Section       96  libspace.o(.bss)
     STK_GetElapsedCounts.Local_PreviousValue 0x20000070   Data           4  stk_program.o(.bss.STK_GetElapsedCounts.Local_PreviousValue)
     [Anonymous Symbol]                       0x20000070   Section        0  stk_program.o(.bss.STK_GetElapsedCounts.Local_PreviousValue)
@@ -662,45 +680,47 @@ Image Symbol Table
     __I$use$semihosting                      0x08000241   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x08000241   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x08000243   Thumb Code     0  indicate_semi.o(.text)
-    BlinkYellow                              0x08000245   Thumb Code    88  main.o(.text.BlinkYellow)
-    DisableAllLeds                           0x0800029d   Thumb Code    42  main.o(.text.DisableAllLeds)
-    EXTI4_IRQHandler                         0x080002c9   Thumb Code    16  exti_program.o(.text.EXTI4_IRQHandler)
-    EXTI_DisablePendingBit                   0x080002d9   Thumb Code    60  exti_program.o(.text.EXTI_DisablePendingBit)
-    EXTI_SetCallBack                         0x08000315   Thumb Code    20  exti_program.o(.text.EXTI_SetCallBack)
-    EXTI_vInit                               0x08000329   Thumb Code   308  exti_program.o(.text.EXTI_vInit)
-    HAL_LED_Blink                            0x0800045d   Thumb Code   104  led_program.o(.text.HAL_LED_Blink)
-    HAL_LED_Init                             0x080004c5   Thumb Code    30  led_program.o(.text.HAL_LED_Init)
-    HAL_LED_Off                              0x080004e5   Thumb Code    30  led_program.o(.text.HAL_LED_Off)
-    HAL_LED_On                               0x08000505   Thumb Code    30  led_program.o(.text.HAL_LED_On)
-    HAL_PushButton_Init                      0x08000525   Thumb Code   108  button_program.o(.text.HAL_PushButton_Init)
-    HandleBtnPress                           0x08000591   Thumb Code    96  main.o(.text.HandleBtnPress)
-    MCAL_AFIO_SetEXTIConfiguration           0x080005f1   Thumb Code   152  afio_program.o(.text.MCAL_AFIO_SetEXTIConfiguration)
-    MCAL_GPIO_GetPinValue                    0x08000689   Thumb Code   182  gpio_program.o(.text.MCAL_GPIO_GetPinValue)
-    MCAL_GPIO_SetPinMode                     0x08000741   Thumb Code   486  gpio_program.o(.text.MCAL_GPIO_SetPinMode)
-    MCAL_GPIO_SetPinValue                    0x08000929   Thumb Code   334  gpio_program.o(.text.MCAL_GPIO_SetPinValue)
-    MCAL_NVIC_ClearPendingIRQ                0x08000a79   Thumb Code   140  nvic_program.o(.text.MCAL_NVIC_ClearPendingIRQ)
-    MCAL_NVIC_EnableIRQ                      0x08000b05   Thumb Code   148  nvic_program.o(.text.MCAL_NVIC_EnableIRQ)
-    Mcal_Rcc_EnablePeripheral                0x08000b99   Thumb Code   150  rcc_program.o(.text.Mcal_Rcc_EnablePeripheral)
-    Mcal_Rcc_InitSysClock                    0x08000c31   Thumb Code    76  rcc_program.o(.text.Mcal_Rcc_InitSysClock)
-    STK_GetElapsedCounts                     0x08000c7d   Thumb Code    98  stk_program.o(.text.STK_GetElapsedCounts)
-    STK_Reset                                0x08000ce1   Thumb Code    48  stk_program.o(.text.STK_Reset)
-    STK_SetDelay_ms                          0x08000d11   Thumb Code   126  stk_program.o(.text.STK_SetDelay_ms)
-    StartPeople                              0x08000ebd   Thumb Code    58  main.o(.text.StartPeople)
-    StartRoad                                0x08000ef9   Thumb Code    58  main.o(.text.StartRoad)
-    StartTrafficToggling                     0x08000f35   Thumb Code    98  main.o(.text.StartTrafficToggling)
-    SystemInit                               0x08000f99   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
-    main                                     0x08001001   Thumb Code   108  main.o(.text.main)
-    __aeabi_f2uiz                            0x0800106d   Thumb Code     0  ffixu.o(x$fpl$ffixu)
-    _ffixu                                   0x0800106d   Thumb Code    62  ffixu.o(x$fpl$ffixu)
-    __aeabi_ui2f                             0x080010ad   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
-    _ffltu                                   0x080010ad   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
-    __aeabi_fmul                             0x080010d5   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x080010d5   Thumb Code   258  fmul.o(x$fpl$fmul)
-    __fpl_fnaninf                            0x080011d7   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    __fpl_fretinf                            0x08001263   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    Region$$Table$$Base                      0x0800126c   Number         0  anon$$obj.o(Region$$Table)
-    __I$use$fp                               0x0800126c   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Limit                     0x0800128c   Number         0  anon$$obj.o(Region$$Table)
+    BlinkYellow                              0x08000245   Thumb Code    92  main.o(.text.BlinkYellow)
+    DisableAllLeds                           0x080002a1   Thumb Code    42  main.o(.text.DisableAllLeds)
+    EXTI4_IRQHandler                         0x080002cd   Thumb Code    16  exti_program.o(.text.EXTI4_IRQHandler)
+    EXTI_DisablePendingBit                   0x080002dd   Thumb Code    68  exti_program.o(.text.EXTI_DisablePendingBit)
+    EXTI_SetCallBack                         0x08000321   Thumb Code    20  exti_program.o(.text.EXTI_SetCallBack)
+    EXTI_vInit                               0x08000335   Thumb Code   352  exti_program.o(.text.EXTI_vInit)
+    HAL_LED_Blink                            0x08000495   Thumb Code   104  led_program.o(.text.HAL_LED_Blink)
+    HAL_LED_Init                             0x080004fd   Thumb Code    30  led_program.o(.text.HAL_LED_Init)
+    HAL_LED_Off                              0x0800051d   Thumb Code    30  led_program.o(.text.HAL_LED_Off)
+    HAL_LED_On                               0x0800053d   Thumb Code    30  led_program.o(.text.HAL_LED_On)
+    HandleBtnPress                           0x0800055d   Thumb Code   112  main.o(.text.HandleBtnPress)
+    Interrupt_BlinkYellow                    0x080005cd   Thumb Code   130  main.o(.text.Interrupt_BlinkYellow)
+    Interrupt_StartPeople                    0x08000651   Thumb Code    80  main.o(.text.Interrupt_StartPeople)
+    Interrupt_StartRoad                      0x080006a1   Thumb Code    80  main.o(.text.Interrupt_StartRoad)
+    MCAL_AFIO_SetEXTIConfiguration           0x080006f1   Thumb Code   152  afio_program.o(.text.MCAL_AFIO_SetEXTIConfiguration)
+    MCAL_GPIO_GetPinValue                    0x08000789   Thumb Code   182  gpio_program.o(.text.MCAL_GPIO_GetPinValue)
+    MCAL_GPIO_SetPinMode                     0x08000841   Thumb Code   486  gpio_program.o(.text.MCAL_GPIO_SetPinMode)
+    MCAL_GPIO_SetPinValue                    0x08000a29   Thumb Code   334  gpio_program.o(.text.MCAL_GPIO_SetPinValue)
+    MCAL_NVIC_ClearPendingIRQ                0x08000b79   Thumb Code   140  nvic_program.o(.text.MCAL_NVIC_ClearPendingIRQ)
+    MCAL_NVIC_EnableIRQ                      0x08000c05   Thumb Code   148  nvic_program.o(.text.MCAL_NVIC_EnableIRQ)
+    Mcal_Rcc_EnablePeripheral                0x08000c99   Thumb Code   150  rcc_program.o(.text.Mcal_Rcc_EnablePeripheral)
+    Mcal_Rcc_InitSysClock                    0x08000d31   Thumb Code    76  rcc_program.o(.text.Mcal_Rcc_InitSysClock)
+    STK_GetElapsedCounts                     0x08000d7d   Thumb Code    98  stk_program.o(.text.STK_GetElapsedCounts)
+    STK_Reset                                0x08000de1   Thumb Code    48  stk_program.o(.text.STK_Reset)
+    STK_SetDelay_ms                          0x08000e11   Thumb Code   126  stk_program.o(.text.STK_SetDelay_ms)
+    StartPeople                              0x08000fbd   Thumb Code    62  main.o(.text.StartPeople)
+    StartRoad                                0x08000ffd   Thumb Code    62  main.o(.text.StartRoad)
+    StartTrafficToggling                     0x0800103d   Thumb Code    98  main.o(.text.StartTrafficToggling)
+    SystemInit                               0x080010a1   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
+    main                                     0x08001109   Thumb Code   106  main.o(.text.main)
+    __aeabi_f2uiz                            0x08001175   Thumb Code     0  ffixu.o(x$fpl$ffixu)
+    _ffixu                                   0x08001175   Thumb Code    62  ffixu.o(x$fpl$ffixu)
+    __aeabi_ui2f                             0x080011b5   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
+    _ffltu                                   0x080011b5   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
+    __aeabi_fmul                             0x080011dd   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x080011dd   Thumb Code   258  fmul.o(x$fpl$fmul)
+    __fpl_fnaninf                            0x080012df   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x0800136b   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    Region$$Table$$Base                      0x08001374   Number         0  anon$$obj.o(Region$$Table)
+    __I$use$fp                               0x08001374   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Limit                     0x08001394   Number         0  anon$$obj.o(Region$$Table)
     EXTI_Configurations                      0x20000000   Data          16  exti_program.o(.data.EXTI_Configurations)
     __libspace_start                         0x20000010   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000070   Data           0  libspace.o(.bss)
@@ -714,143 +734,147 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x0000129c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x000013a4, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000128c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001394, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000ec   Data   RO          163    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000008   Code   RO          191  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x080000f4   0x00000034   Code   RO          373    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x08000128   0x0000001a   Code   RO          375    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x08000000   0x08000000   0x000000ec   Data   RO          168    RESET               startup_stm32f10x_md.o
+    0x080000ec   0x080000ec   0x00000008   Code   RO          196  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x080000f4   0x00000034   Code   RO          378    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x08000128   0x0000001a   Code   RO          380    !!handler_copy      c_w.l(__scatter_copy.o)
     0x08000142   0x08000142   0x00000002   PAD
-    0x08000144   0x08000144   0x0000001c   Code   RO          377    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000160   0x08000160   0x00000002   Code   RO          235    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          242    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          244    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          246    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          249    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          251    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          253    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          256    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          258    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          260    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          262    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          264    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          266    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          268    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          270    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          272    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          274    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          276    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          280    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          282    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          284    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          286    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000002   Code   RO          287    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x08000164   0x08000164   0x00000002   Code   RO          309    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          324    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          326    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          329    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          332    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          334    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          337    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x08000166   0x08000166   0x00000002   Code   RO          338    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x08000168   0x08000168   0x00000000   Code   RO          205    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000168   0x08000168   0x00000000   Code   RO          212    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000168   0x08000168   0x00000006   Code   RO          224    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x0800016e   0x0800016e   0x00000000   Code   RO          214    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x0800016e   0x0800016e   0x00000004   Code   RO          215    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x08000172   0x08000172   0x00000000   Code   RO          217    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x08000172   0x08000172   0x00000008   Code   RO          218    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0800017a   0x0800017a   0x00000002   Code   RO          239    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0800017c   0x0800017c   0x00000000   Code   RO          289    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0800017c   0x0800017c   0x00000004   Code   RO          290    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x08000180   0x08000180   0x00000006   Code   RO          291    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000144   0x08000144   0x0000001c   Code   RO          382    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000160   0x08000160   0x00000002   Code   RO          240    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          247    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          249    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          251    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          254    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          256    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          258    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          261    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          263    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          265    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          267    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          269    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          271    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          273    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          275    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          277    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          279    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          281    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          285    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          287    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          289    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          291    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000002   Code   RO          292    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x08000164   0x08000164   0x00000002   Code   RO          314    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          329    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          331    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          334    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          337    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          339    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          342    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x08000166   0x08000166   0x00000002   Code   RO          343    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x08000168   0x08000168   0x00000000   Code   RO          210    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000168   0x08000168   0x00000000   Code   RO          217    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000168   0x08000168   0x00000006   Code   RO          229    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x0800016e   0x0800016e   0x00000000   Code   RO          219    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0800016e   0x0800016e   0x00000004   Code   RO          220    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x08000172   0x08000172   0x00000000   Code   RO          222    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x08000172   0x08000172   0x00000008   Code   RO          223    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0800017a   0x0800017a   0x00000002   Code   RO          244    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0800017c   0x0800017c   0x00000000   Code   RO          294    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0800017c   0x0800017c   0x00000004   Code   RO          295    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x08000180   0x08000180   0x00000006   Code   RO          296    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x08000186   0x08000186   0x00000002   PAD
-    0x08000188   0x08000188   0x00000040   Code   RO          164  * .text               startup_stm32f10x_md.o
-    0x080001c8   0x080001c8   0x00000006   Code   RO          189    .text               c_w.l(heapauxi.o)
-    0x080001ce   0x080001ce   0x0000004a   Code   RO          226    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000218   0x08000218   0x00000012   Code   RO          228    .text               c_w.l(exit.o)
+    0x08000188   0x08000188   0x00000040   Code   RO          169  * .text               startup_stm32f10x_md.o
+    0x080001c8   0x080001c8   0x00000006   Code   RO          194    .text               c_w.l(heapauxi.o)
+    0x080001ce   0x080001ce   0x0000004a   Code   RO          231    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000218   0x08000218   0x00000012   Code   RO          233    .text               c_w.l(exit.o)
     0x0800022a   0x0800022a   0x00000002   PAD
-    0x0800022c   0x0800022c   0x00000008   Code   RO          236    .text               c_w.l(libspace.o)
-    0x08000234   0x08000234   0x0000000c   Code   RO          299    .text               c_w.l(sys_exit.o)
-    0x08000240   0x08000240   0x00000002   Code   RO          314    .text               c_w.l(use_no_semi.o)
-    0x08000242   0x08000242   0x00000000   Code   RO          316    .text               c_w.l(indicate_semi.o)
+    0x0800022c   0x0800022c   0x00000008   Code   RO          241    .text               c_w.l(libspace.o)
+    0x08000234   0x08000234   0x0000000c   Code   RO          304    .text               c_w.l(sys_exit.o)
+    0x08000240   0x08000240   0x00000002   Code   RO          319    .text               c_w.l(use_no_semi.o)
+    0x08000242   0x08000242   0x00000000   Code   RO          321    .text               c_w.l(indicate_semi.o)
     0x08000242   0x08000242   0x00000002   PAD
-    0x08000244   0x08000244   0x00000058   Code   RO          100    .text.BlinkYellow   main.o
-    0x0800029c   0x0800029c   0x0000002a   Code   RO           98    .text.DisableAllLeds  main.o
-    0x080002c6   0x080002c6   0x00000002   PAD
-    0x080002c8   0x080002c8   0x00000010   Code   RO           16    .text.EXTI4_IRQHandler  exti_program.o
-    0x080002d8   0x080002d8   0x0000003c   Code   RO           12    .text.EXTI_DisablePendingBit  exti_program.o
-    0x08000314   0x08000314   0x00000014   Code   RO           14    .text.EXTI_SetCallBack  exti_program.o
-    0x08000328   0x08000328   0x00000134   Code   RO            2    .text.EXTI_vInit    exti_program.o
-    0x0800045c   0x0800045c   0x00000068   Code   RO           46    .text.HAL_LED_Blink  led_program.o
-    0x080004c4   0x080004c4   0x0000001e   Code   RO           40    .text.HAL_LED_Init  led_program.o
-    0x080004e2   0x080004e2   0x00000002   PAD
-    0x080004e4   0x080004e4   0x0000001e   Code   RO           44    .text.HAL_LED_Off   led_program.o
-    0x08000502   0x08000502   0x00000002   PAD
-    0x08000504   0x08000504   0x0000001e   Code   RO           42    .text.HAL_LED_On    led_program.o
-    0x08000522   0x08000522   0x00000002   PAD
-    0x08000524   0x08000524   0x0000006c   Code   RO          123    .text.HAL_PushButton_Init  button_program.o
-    0x08000590   0x08000590   0x00000060   Code   RO           94    .text.HandleBtnPress  main.o
-    0x080005f0   0x080005f0   0x00000098   Code   RO          115    .text.MCAL_AFIO_SetEXTIConfiguration  afio_program.o
-    0x08000688   0x08000688   0x000000b6   Code   RO           31    .text.MCAL_GPIO_GetPinValue  gpio_program.o
-    0x0800073e   0x0800073e   0x00000002   PAD
-    0x08000740   0x08000740   0x000001e6   Code   RO           27    .text.MCAL_GPIO_SetPinMode  gpio_program.o
-    0x08000926   0x08000926   0x00000002   PAD
-    0x08000928   0x08000928   0x0000014e   Code   RO           29    .text.MCAL_GPIO_SetPinValue  gpio_program.o
-    0x08000a76   0x08000a76   0x00000002   PAD
-    0x08000a78   0x08000a78   0x0000008c   Code   RO          141    .text.MCAL_NVIC_ClearPendingIRQ  nvic_program.o
-    0x08000b04   0x08000b04   0x00000094   Code   RO          135    .text.MCAL_NVIC_EnableIRQ  nvic_program.o
-    0x08000b98   0x08000b98   0x00000096   Code   RO           57    .text.Mcal_Rcc_EnablePeripheral  rcc_program.o
-    0x08000c2e   0x08000c2e   0x00000002   PAD
-    0x08000c30   0x08000c30   0x0000004c   Code   RO           55    .text.Mcal_Rcc_InitSysClock  rcc_program.o
-    0x08000c7c   0x08000c7c   0x00000062   Code   RO           78    .text.STK_GetElapsedCounts  stk_program.o
-    0x08000cde   0x08000cde   0x00000002   PAD
-    0x08000ce0   0x08000ce0   0x00000030   Code   RO           74    .text.STK_Reset     stk_program.o
-    0x08000d10   0x08000d10   0x0000007e   Code   RO           82    .text.STK_SetDelay_ms  stk_program.o
-    0x08000d8e   0x08000d8e   0x00000002   PAD
-    0x08000d90   0x08000d90   0x00000008   Code   RO          173    .text.SetSysClock   system_stm32f10x.o
-    0x08000d98   0x08000d98   0x00000122   Code   RO          177    .text.SetSysClockTo72  system_stm32f10x.o
-    0x08000eba   0x08000eba   0x00000002   PAD
-    0x08000ebc   0x08000ebc   0x0000003a   Code   RO          102    .text.StartPeople   main.o
-    0x08000ef6   0x08000ef6   0x00000002   PAD
-    0x08000ef8   0x08000ef8   0x0000003a   Code   RO          104    .text.StartRoad     main.o
-    0x08000f32   0x08000f32   0x00000002   PAD
-    0x08000f34   0x08000f34   0x00000062   Code   RO           96    .text.StartTrafficToggling  main.o
-    0x08000f96   0x08000f96   0x00000002   PAD
-    0x08000f98   0x08000f98   0x00000066   Code   RO          171    .text.SystemInit    system_stm32f10x.o
-    0x08000ffe   0x08000ffe   0x00000002   PAD
-    0x08001000   0x08001000   0x0000006c   Code   RO           92    .text.main          main.o
-    0x0800106c   0x0800106c   0x0000003e   Code   RO          193    x$fpl$ffixu         fz_ws.l(ffixu.o)
-    0x080010aa   0x080010aa   0x00000002   PAD
-    0x080010ac   0x080010ac   0x00000026   Code   RO          197    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
-    0x080010d2   0x080010d2   0x00000002   PAD
-    0x080010d4   0x080010d4   0x00000102   Code   RO          203    x$fpl$fmul          fz_ws.l(fmul.o)
-    0x080011d6   0x080011d6   0x0000008c   Code   RO          206    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
-    0x08001262   0x08001262   0x0000000a   Code   RO          208    x$fpl$fretinf       fz_ws.l(fretinf.o)
-    0x0800126c   0x0800126c   0x00000000   Code   RO          210    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x0800126c   0x0800126c   0x00000020   Data   RO          372    Region$$Table       anon$$obj.o
+    0x08000244   0x08000244   0x0000005c   Code   RO          108    .text.BlinkYellow   main.o
+    0x080002a0   0x080002a0   0x0000002a   Code   RO           98    .text.DisableAllLeds  main.o
+    0x080002ca   0x080002ca   0x00000002   PAD
+    0x080002cc   0x080002cc   0x00000010   Code   RO           16    .text.EXTI4_IRQHandler  exti_program.o
+    0x080002dc   0x080002dc   0x00000044   Code   RO           12    .text.EXTI_DisablePendingBit  exti_program.o
+    0x08000320   0x08000320   0x00000014   Code   RO           14    .text.EXTI_SetCallBack  exti_program.o
+    0x08000334   0x08000334   0x00000160   Code   RO            2    .text.EXTI_vInit    exti_program.o
+    0x08000494   0x08000494   0x00000068   Code   RO           46    .text.HAL_LED_Blink  led_program.o
+    0x080004fc   0x080004fc   0x0000001e   Code   RO           40    .text.HAL_LED_Init  led_program.o
+    0x0800051a   0x0800051a   0x00000002   PAD
+    0x0800051c   0x0800051c   0x0000001e   Code   RO           44    .text.HAL_LED_Off   led_program.o
+    0x0800053a   0x0800053a   0x00000002   PAD
+    0x0800053c   0x0800053c   0x0000001e   Code   RO           42    .text.HAL_LED_On    led_program.o
+    0x0800055a   0x0800055a   0x00000002   PAD
+    0x0800055c   0x0800055c   0x00000070   Code   RO           94    .text.HandleBtnPress  main.o
+    0x080005cc   0x080005cc   0x00000082   Code   RO          100    .text.Interrupt_BlinkYellow  main.o
+    0x0800064e   0x0800064e   0x00000002   PAD
+    0x08000650   0x08000650   0x00000050   Code   RO          102    .text.Interrupt_StartPeople  main.o
+    0x080006a0   0x080006a0   0x00000050   Code   RO          104    .text.Interrupt_StartRoad  main.o
+    0x080006f0   0x080006f0   0x00000098   Code   RO          120    .text.MCAL_AFIO_SetEXTIConfiguration  afio_program.o
+    0x08000788   0x08000788   0x000000b6   Code   RO           31    .text.MCAL_GPIO_GetPinValue  gpio_program.o
+    0x0800083e   0x0800083e   0x00000002   PAD
+    0x08000840   0x08000840   0x000001e6   Code   RO           27    .text.MCAL_GPIO_SetPinMode  gpio_program.o
+    0x08000a26   0x08000a26   0x00000002   PAD
+    0x08000a28   0x08000a28   0x0000014e   Code   RO           29    .text.MCAL_GPIO_SetPinValue  gpio_program.o
+    0x08000b76   0x08000b76   0x00000002   PAD
+    0x08000b78   0x08000b78   0x0000008c   Code   RO          146    .text.MCAL_NVIC_ClearPendingIRQ  nvic_program.o
+    0x08000c04   0x08000c04   0x00000094   Code   RO          140    .text.MCAL_NVIC_EnableIRQ  nvic_program.o
+    0x08000c98   0x08000c98   0x00000096   Code   RO           57    .text.Mcal_Rcc_EnablePeripheral  rcc_program.o
+    0x08000d2e   0x08000d2e   0x00000002   PAD
+    0x08000d30   0x08000d30   0x0000004c   Code   RO           55    .text.Mcal_Rcc_InitSysClock  rcc_program.o
+    0x08000d7c   0x08000d7c   0x00000062   Code   RO           78    .text.STK_GetElapsedCounts  stk_program.o
+    0x08000dde   0x08000dde   0x00000002   PAD
+    0x08000de0   0x08000de0   0x00000030   Code   RO           74    .text.STK_Reset     stk_program.o
+    0x08000e10   0x08000e10   0x0000007e   Code   RO           82    .text.STK_SetDelay_ms  stk_program.o
+    0x08000e8e   0x08000e8e   0x00000002   PAD
+    0x08000e90   0x08000e90   0x00000008   Code   RO          178    .text.SetSysClock   system_stm32f10x.o
+    0x08000e98   0x08000e98   0x00000122   Code   RO          182    .text.SetSysClockTo72  system_stm32f10x.o
+    0x08000fba   0x08000fba   0x00000002   PAD
+    0x08000fbc   0x08000fbc   0x0000003e   Code   RO          110    .text.StartPeople   main.o
+    0x08000ffa   0x08000ffa   0x00000002   PAD
+    0x08000ffc   0x08000ffc   0x0000003e   Code   RO          106    .text.StartRoad     main.o
+    0x0800103a   0x0800103a   0x00000002   PAD
+    0x0800103c   0x0800103c   0x00000062   Code   RO           96    .text.StartTrafficToggling  main.o
+    0x0800109e   0x0800109e   0x00000002   PAD
+    0x080010a0   0x080010a0   0x00000066   Code   RO          176    .text.SystemInit    system_stm32f10x.o
+    0x08001106   0x08001106   0x00000002   PAD
+    0x08001108   0x08001108   0x0000006a   Code   RO           92    .text.main          main.o
+    0x08001172   0x08001172   0x00000002   PAD
+    0x08001174   0x08001174   0x0000003e   Code   RO          198    x$fpl$ffixu         fz_ws.l(ffixu.o)
+    0x080011b2   0x080011b2   0x00000002   PAD
+    0x080011b4   0x080011b4   0x00000026   Code   RO          202    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
+    0x080011da   0x080011da   0x00000002   PAD
+    0x080011dc   0x080011dc   0x00000102   Code   RO          208    x$fpl$fmul          fz_ws.l(fmul.o)
+    0x080012de   0x080012de   0x0000008c   Code   RO          211    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x0800136a   0x0800136a   0x0000000a   Code   RO          213    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x08001374   0x08001374   0x00000000   Code   RO          215    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x08001374   0x08001374   0x00000020   Data   RO          377    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x0800128c, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x0800128c   0x00000010   Data   RW           19    .data.EXTI_Configurations  exti_program.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000010, Load base: 0x0800129c, Size: 0x00000668, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001394, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000010        -       0x00000060   Zero   RW          237    .bss                c_w.l(libspace.o)
+    0x20000000   0x08001394   0x00000010   Data   RW           19    .data.EXTI_Configurations  exti_program.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000010, Load base: 0x080013a4, Size: 0x00000668, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000010        -       0x00000060   Zero   RW          242    .bss                c_w.l(libspace.o)
     0x20000070        -       0x00000004   Zero   RW           84    .bss.STK_GetElapsedCounts.Local_PreviousValue  stk_program.o
     0x20000074        -       0x00000004   Zero   RW           18    .bss.ptr            exti_program.o
-    0x20000078        -       0x00000200   Zero   RW          162    HEAP                startup_stm32f10x_md.o
-    0x20000278        -       0x00000400   Zero   RW          161    STACK               startup_stm32f10x_md.o
+    0x20000078        -       0x00000200   Zero   RW          167    HEAP                startup_stm32f10x_md.o
+    0x20000278        -       0x00000400   Zero   RW          166    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -861,11 +885,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        152          0          0          0          0       1045   afio_program.o
-       108          0          0          0          0       1863   button_program.o
-       404          0          0         16          4       2639   exti_program.o
+       456          0          0         16          4       2678   exti_program.o
       1002          0          0          0          0       1734   gpio_program.o
        194          0          0          0          0       1132   led_program.o
-       548          0          0          0          0       1579   main.o
+       864          0          0          0          0       2017   main.o
        288          0          0          0          0       2413   nvic_program.o
        226          0          0          0          0       1141   rcc_program.o
         64         26        236          0       1536        908   startup_stm32f10x_md.o
@@ -873,9 +896,9 @@ Image component sizes
        400          0          0          0          0       2933   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      3688         26        268         16       1544      19363   Object Totals
+      3952         26        268         16       1544      17977   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        30          0          0          0          0          0   (incl. Padding)
+        34          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -929,15 +952,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4480         54        268         16       1640      19787   Grand Totals
-      4480         54        268         16       1640      19787   ELF Image Totals
-      4480         54        268         16          0          0   ROM Totals
+      4744         54        268         16       1640      18421   Grand Totals
+      4744         54        268         16       1640      18421   ELF Image Totals
+      4744         54        268         16          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4748 (   4.64kB)
+    Total RO  Size (Code + RO Data)                 5012 (   4.89kB)
     Total RW  Size (RW Data + ZI Data)              1656 (   1.62kB)
-    Total ROM Size (Code + RO Data + RW Data)       4764 (   4.65kB)
+    Total ROM Size (Code + RO Data + RW Data)       5028 (   4.91kB)
 
 ==============================================================================
 

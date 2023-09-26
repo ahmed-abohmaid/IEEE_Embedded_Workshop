@@ -73,37 +73,61 @@ main.c(8): warning: In file included from...
 ./NVIC_interface.h(176): warning: no newline at end of file [-Wnewline-eof]
 #endif // NVIC_INTERFACE_H
                           ^
-main.c(11): warning: In file included from...
+main.c(9): warning: In file included from...
+./AFIO_interface.h(38): warning: // comments are not allowed in this language [-Wcomment]
+#endif // AFIO_INTERFACE_H
+       ^
+./AFIO_interface.h(38): warning: no newline at end of file [-Wnewline-eof]
+#endif // AFIO_INTERFACE_H
+                          ^
+main.c(10): warning: In file included from...
+./SCB_interface.h(27): warning: // comments are not allowed in this language [-Wcomment]
+#endif // SCB_INTERFACE_H
+       ^
+./SCB_interface.h(27): warning: no newline at end of file [-Wnewline-eof]
+#endif // SCB_INTERFACE_H
+                         ^
+main.c(13): warning: In file included from...
 ./BUTTON_interface.h(81): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
     PB_PIN15, /**< Pin 15 */ 
             ^
-main.c(24): warning: no previous extern declaration for non-static variable 'longPressDetected' [-Wmissing-variable-declarations]
-volatile u8 longPressDetected = 1;
-            ^
-main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-volatile u8 longPressDetected = 1;
-         ^
-main.c(64): warning: // comments are not allowed in this language [-Wcomment]
+main.c(66): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
+        MCAL_GPIO_SetPinMode(GPIO_PORTA, GPIO_PIN4, GPIO_INPUT_PULL_DOWN_MOD);
+                                                    ^
+./GPIO_interface.h(66): note: expanded from macro 'GPIO_INPUT_PULL_DOWN_MOD'
+#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
+                                                 ^
+main.c(71): warning: // comments are not allowed in this language [-Wcomment]
         MCAL_NVIC_EnableIRQ(10); // For Line 4
                                  ^
-main.c(93): warning: implicit declaration of function 'Reset_Handler' [-Wimplicit-function-declaration]
-                Reset_Handler();
-                ^
-main.c(108): warning: implicit declaration of function 'Reset_Handler' [-Wimplicit-function-declaration]
-                Reset_Handler();
-                ^
-main.c(83): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+main.c(83): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 50000; i > 0; i--);
+             ^
+main.c(83): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(85): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         u8 currButtonState;
            ^
-main.c(169): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+main.c(177): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         u32 yellowBlinkStartTime = STK_GetElapsedCounts();
             ^
-20 warnings generated.
+main.c(195): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for(u32 i = 0; i < 166000; i++);
+            ^
+main.c(195): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(206): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for(u32 i = 0; i < 166000; i++);
+            ^
+main.c(206): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(226): warning: for loop has empty body [-Wempty-body]
+                          for(BlinkDelay = 0; BlinkDelay < 20000; BlinkDelay++);
+                                                                               ^
+main.c(226): note: put the semicolon on a separate line to silence this warning
+29 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=4480 RO-data=268 RW-data=16 ZI-data=1640  
+Program Size: Code=4744 RO-data=268 RW-data=16 ZI-data=1640  
 FromELF: creating hex file...
-".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 20 Warning(s).
+".\Objects\on-demand-traffic-light-system.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -131,9 +155,9 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
       Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
-      Source file:   Device/Source/system_stm32f10x.c
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

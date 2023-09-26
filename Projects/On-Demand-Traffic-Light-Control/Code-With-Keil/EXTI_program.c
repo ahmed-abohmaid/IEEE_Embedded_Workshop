@@ -24,8 +24,8 @@ void EXTI_vInit(void)
   {
     if (EXTI_Configurations[Line].LineEnabled == EXTI_LINE_ENABLED)
     {
-      SET_BIT(EXTI->IMR, Line);
-
+EXTI->IMR |= (1 << Line);  /**< Enable the EXTI line */ 
+					  EXTI->EMR |= (1 << Line);
       switch (EXTI_Configurations[Line].TriggerType)
       {
       case EXTI_RISING_EDGE:
@@ -49,7 +49,8 @@ void EXTI_vInit(void)
     }
     else
     {
-      CLR_BIT(EXTI->IMR, Line);
+      EXTI->IMR &= ~(1 << Line);  /**< Disable the EXTI line */ 
+					EXTI->EMR &= ~(1 << Line);
     }
   }
 }
@@ -166,7 +167,8 @@ Std_ReturnType EXTI_DisablePendingBit(u8 Copy_Line)
 
   if (Copy_Line < EXTI_LINES_COUNT)
   {
-    EXTI->PR = Copy_Line;
+    EXTI->PR |= (1<< Copy_Line);
+
     Local_FunctionStatus = E_OK;
   }
   else

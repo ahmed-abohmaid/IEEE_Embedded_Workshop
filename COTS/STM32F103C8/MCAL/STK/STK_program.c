@@ -124,7 +124,7 @@ Std_ReturnType STK_SetBusyWait(u32 Copy_Microseconds)
     STK->CTRL &= ~STK_CTRL_ENABLE_MASK;
 
     /**< Reset the timer value */ 
-    STK->VAL = 0;
+    STK_Reset();
 
     Local_FunctionStatus = E_OK;
   }
@@ -153,7 +153,7 @@ Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds)
     STK->CTRL &= ~STK_CTRL_ENABLE_MASK;
 
     /**< Reset the timer value */ 
-    STK->VAL = 0;
+    STK_Reset();
 
     /**< Return success status */
     return E_OK;
